@@ -13,7 +13,7 @@ const configApp = (app) => {
     // app.use(flash());
 
     const staticPath = path.join(__dirname, '../../../public/');
-    app.use('/static', express.static(staticPath));
+    app.use(express.static(staticPath));
 
     app.use( '/libs',
         express.static(

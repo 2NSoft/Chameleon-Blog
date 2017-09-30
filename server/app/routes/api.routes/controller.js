@@ -6,8 +6,6 @@ const init = ( data ) => {
                 email: req.body.email,
                 password: req.body.password,
                 stringProfilePicture: 'user.png',
-                nationality: req.body.nationality,
-                favourites: [],
             };
 
             if ( !data.users.validator.isValid( model ) ) {
@@ -41,7 +39,6 @@ const init = ( data ) => {
                     user.username = req.user.username;
                     user.email = req.body.email || user.email;
                     user.password = req.body.password || user.password;
-                    user.nationality = req.body.nationality || user.nationality;
                     if ( req.file ) {
                         user.stringProfilePicture = req.file.filename;
                     }

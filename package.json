@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "gulp": "./node_modules/.bin/gulp"
   },
   "repository": {
     "type": "git",
@@ -31,13 +32,25 @@
     "pug": "^2.0.0-rc.2"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.6.0",
+    "cssnano": "^3.10.0",
+    "del": "^3.0.0",
     "eslint": "^4.2.0",
     "eslint-config-google": "^0.8.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^4.0.0",
     "gulp-istanbul": "^1.1.2",
     "gulp-mocha": "3",
     "gulp-nodemon": "^2.2.1",
+    "gulp-postcss": "^7.0.0",
+    "gulp-stylus": "^2.6.0",
+    "gulp-sync": "^0.1.4",
+    "gulp-uglify": "^3.0.0",
     "nodemon": "^1.11.0"
   }
 }

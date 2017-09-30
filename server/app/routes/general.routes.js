@@ -1,7 +1,7 @@
 
 const attach = (app) => {
-    app.get('/', (req, res) => {
-        res.render('general/home.pug');
+    app.get('/404', (req, res) => {
+        res.send( 'Page not found' );
     });
 };
 

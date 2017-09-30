@@ -1,4 +1,5 @@
 /* eslint-disable no-undefined*/
+/* eslint-disable max-len*/
 class Validator {
     static default() {
         return {

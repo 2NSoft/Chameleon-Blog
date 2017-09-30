@@ -18,7 +18,7 @@ const init = (data) => {
     require('./routes').attachRoutes(app, data);
 
     app.get('/*', (req, res) => {
-        res.redirect('/404');
+        res.status(404).send('Resourse not found');
     });
 
     return Promise.resolve(app);
