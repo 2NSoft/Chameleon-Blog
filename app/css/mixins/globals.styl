@@ -1,0 +1,17 @@
+shadow-color = rgb( 229, 229, 229 )
+text-color-search = rgb( 194, 194, 194 )
+text-color-menu-inactive = rgb( 57, 57, 57 );
+text-color-menu-active = rgb( 66, 125, 139 )
+
+
+.shadowed-text 
+    text-shadow: 1px 1px shadow-color
+
+.content-container
+    max-width: 960px;
+    padding: 0px;
+active()
+    .isActive
+        color: text-color-menu-active !important;
+    &:hover
+        color: text-color-menu-active !important;

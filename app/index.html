@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chameleon Blog</title>
-    <link rel="stylesheet" href="./css/min.main.css">
+    <link rel="stylesheet" href="./libs/normalize.css/normalize.css">
+    <link rel="stylesheet" href="./libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/min.main.css">    
 </head>
+
 <body>
-    <h1 class="red">It works!</h1>
+    <div class="container content-container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="nav-brand" href="#">
+                        <img src="./images/Logo.png" alt="logo">
+                        <p class="logo-text-container">
+                            <span class="nav-logo-text">Chameleon</span><br>
+                            <span class="nav-slogan">A blog to remember</span>
+                        </p>
+                    </a>
+                </div>
+
+                <form class="nav-search">
+                        <input type="text" class="input-search" placeholder="Search this website">
+                        <button type="submit" class="btn-search"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+                <div class="collapse navbar-collapse" id="nav-collapse">
+                    <ul class="nav navbar-nav navbar-right shadowed-text">
+                        <li><a href="#" class="isActive">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+    <script src='./libs/jquery/dist/jquery.min.js'></script>
+    <script src='./libs/tether/dist/js/tether.min.js'></script>
+    <script src='./libs/bootstrap/dist/js/bootstrap.min.js'></script>
 
     <script src="./js/min.app.js"></script>
 </body>
+
 </html>

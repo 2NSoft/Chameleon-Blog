@@ -78,7 +78,7 @@ gulp.task('compile:css', ['clear:css'], () => {
         autoprefixer({
             browsers: ['last 1 version'],
         }),
-        cssnano(),
+        //cssnano({ minifyFontValues: false, discardUnused: false }),
     ];
     return gulp.src('./app/css/*.styl')
         .pipe(stylus())
@@ -112,7 +112,34 @@ gulp.task('lint:browser', () => {
 
 gulp.task('lint', ['lint:server', 'lint:browser']);
 
+gulp.task('clear:fonts', () => {
+    return del(['./public/css/fonts/*']);
+});
+
+gulp.task( 'copy:fonts', ['clear:fonts'], () => {
+    return gulp.src( ['./app/css/fonts/*'] )
+        .pipe( gulp.dest('./public/css/fonts') );
+});
+
+gulp.task('clear:fonts', () => {
+    return del(['./public/images/*']);
+});
+
+gulp.task( 'copy:fonts', ['clear:fonts'], () => {
+    return gulp.src( ['./app/images/*'] )
+        .pipe( gulp.dest('./public/images') );
+});
+
+gulp.task( 'copy', ['copy:fonts'] );
+
 const gulpsync = require('gulp-sync')(gulp);
 
 gulp.task('compile',
-    gulpsync.sync(['lint', 'compile:html', 'compile:js', 'compile:css']));
+    gulpsync.sync([
+        'lint',
+        'compile:html',
+        'compile:js',
+        'compile:css',
+    ]));
+
+gulp.task( 'build', ['copy', 'compile'] );
