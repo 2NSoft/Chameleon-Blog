@@ -55,7 +55,7 @@ gulp.task('compile:js', ['clear:js'], () => {
         .pipe(babel({
             presets: ['env'],
         }))
-        .pipe(concat('min.app.js'))
+        //.pipe(concat('min.app.js'))
         .pipe(uglify({
             mangle: {
                 toplevel: true,
@@ -121,16 +121,39 @@ gulp.task( 'copy:fonts', ['clear:fonts'], () => {
         .pipe( gulp.dest('./public/css/fonts') );
 });
 
-gulp.task('clear:fonts', () => {
+gulp.task('clear:images', () => {
     return del(['./public/images/*']);
 });
 
-gulp.task( 'copy:fonts', ['clear:fonts'], () => {
+gulp.task( 'copy:images', ['clear:fonts'], () => {
     return gulp.src( ['./app/images/*'] )
         .pipe( gulp.dest('./public/images') );
 });
 
-gulp.task( 'copy', ['copy:fonts'] );
+gulp.task('clear:templates', () => {
+    return del(['./public/templates/*']);
+});
+
+gulp.task( 'copy:templates', ['clear:templates'], () => {
+    return gulp.src( ['./app/templates/*'] )
+        .pipe( gulp.dest('./public/templates') );
+});
+
+gulp.task('clear:uploads', () => {
+    return del(['./public/uploads/*']);
+});
+
+gulp.task( 'copy:uploads', ['clear:uploads'], () => {
+    return gulp.src( ['./app/uploads/*'] )
+        .pipe( gulp.dest('./public/uploads') );
+});
+
+gulp.task( 'copy', [
+    'copy:fonts',
+    'copy:images',
+    'copy:templates',
+    'copy:uploads',
+]);
 
 const gulpsync = require('gulp-sync')(gulp);
 

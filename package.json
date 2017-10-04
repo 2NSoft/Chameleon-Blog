@@ -26,13 +26,17 @@
     "crypto": "^1.0.1",
     "express": "^4.15.3",
     "express-session": "^1.15.4",
+    "handlebars": "^4.0.10",
     "jquery": "^3.2.1",
     "mongodb": "^2.2.30",
     "mongojs": "^2.4.0",
+    "navigo": "^5.3.1",
     "normalize.css": "^7.0.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.2",
+    "systemjs": "^0.20.19",
+    "systemjs-plugin-babel": "0.0.25",
     "tether": "^1.4.0"
   },
   "devDependencies": {

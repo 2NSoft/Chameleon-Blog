@@ -21,7 +21,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="nav-brand" href="#">
+                    <a class="nav-brand" href="/home" data-navigo>
                         <img src="./images/Logo.png" alt="logo">
                         <p class="logo-text-container">
                             <span class="nav-logo-text">Chameleon</span><br>
@@ -44,13 +44,19 @@
                 </div>
             </div>
         </nav>
-
     </div>
+
+    <main id='app-container'></main>
+
+    <footer></footer>
+
     <script src='./libs/jquery/dist/jquery.min.js'></script>
     <script src='./libs/tether/dist/js/tether.min.js'></script>
     <script src='./libs/bootstrap/dist/js/bootstrap.min.js'></script>
 
-    <script src="./js/min.app.js"></script>
+  <!-- Systemjs js setup-->
+  <script src="./libs/systemjs/dist/system.js"></script>
+  <script src="js/configs/system-config.js"></script>
 </body>
 
 </html>
