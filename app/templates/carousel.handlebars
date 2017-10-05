@@ -2,7 +2,7 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    {{#each posts}}
+    {{#each carouselPosts}}
     <div class="item {{#if @first}} active {{/if}} carousel-item">
       <img src="./uploads/posts/{{_id}}.jpeg" alt="{{title}}" style="width:100%;">
       <div class="carousel-caption">
@@ -16,7 +16,7 @@
 
   <div class="carousel-inner-indicators"> 
     <ol class="carousel-indicators">
-      {{#each posts}}
+      {{#each carouselPosts}}
       <li data-target="#homeCarousel" data-slide-to="{{@index}}" {{#if @first}} class="active" {{/if}}></li>
       {{/each}}
     </ol>

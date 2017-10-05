@@ -1,20 +1,27 @@
 /* globals $ */
 
 import { load as loadTemplate } from 'templates';
+import { registerCarousel } from 'carouselHelper';
+import { registerQuote } from 'quoteHelper';
 
 const $appContainer = $('#app-container');
 
 export function get(params) {
-    return $.get('/api/v1/posts?random=4')
-        .then( (posts) => {
-            return Promise.all([
-                loadTemplate( 'home' ),
-                loadTemplate( 'carousel', { posts } ),
+    return Promise.all( [
+        registerCarousel(),
+        registerQuote(),
+    ])
+        .then( () => {
+            return Promise.all( [
+                $.get('/api/v1/posts?random=4'),
+                $.get('/api/v1/quotes?random=1'),
             ]);
         })
-        .then( ( [homeTemplate, carouselTemplate] ) => {
-            homeTemplate.replace( '###carousel###', carouselTemplate );
-            $appContainer.html(carouselTemplate);
+        .then( ([carouselPosts, quotes]) => {
+            return loadTemplate( 'home', { carouselPosts, quote: quotes[0] } );
+        })
+        .then( ( homeTemplate ) => {
+            $appContainer.html(homeTemplate);
             $('.carousel').carousel({
                 interval: 5000,
               });

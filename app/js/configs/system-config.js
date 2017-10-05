@@ -14,7 +14,9 @@ System.config({
         'user': 'js/user.js',
         'constants': 'js/helpers/constants.js',
         'validator': 'js/helpers/validator.js',
-        'facebookHelper': 'js/helpers/facebookHelper.js',
+        'carouselHelper': 'js/helpers/carousel.helper.js',
+        'quoteHelper': 'js/helpers/quote.helper.js',
+        'cardHelper': 'js/helpers/card.helper.js',
 
         // Controllers
         'homeController': 'js/controllers/homeController.js',

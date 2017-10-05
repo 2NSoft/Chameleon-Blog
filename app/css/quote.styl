@@ -1,0 +1,22 @@
+@require 'mixins/globals';
+
+.main-quote
+    padding: 0px 7px;
+.wrapper-quote
+    font-family: "Kreon", serif;
+    font-weight: 300;
+    padding: 10px 38px;
+    h2
+        &::before
+            content: '\201c';
+        &::after 
+            content: '\201d';
+        color: black;
+        font-size: 2em;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    p   
+        color: text-color-light-grey;
+        font-size: 1.42857em;
+        text-align: right;

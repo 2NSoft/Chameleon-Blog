@@ -88,6 +88,56 @@ const init = (data) => {
                     return res.status(400).send(err);
                 });
         },
+        getQuotes(req, res) {
+            const prepareQuotes = (posts, size) => {
+                posts = posts.map((post) => {
+                    return {
+                        quotes: post.quotes,
+                        author: post.author,
+                        postId: post._id,
+                    };
+                });
+                const quotes = [];
+                posts.forEach((el) => {
+                    el.quotes.forEach((quote) => {
+                        quotes.push({
+                            quote,
+                            author: el.author.name,
+                            postId: el.postId,
+                        });
+                    });
+                });
+                if (!size) {
+                    return quotes;
+                }
+                while (quotes.length > size) {
+                    quotes.splice(Math.floor(
+                        Math.random() * (quotes.length - 1)), 1);
+                }
+                return quotes;
+            };
+            if (req.query.random) {
+                const size = req.query.random || 5;
+                return data.posts.getRandom(+size)
+                    .then((posts) => {
+                        return res
+                            .status(200)
+                            .send(prepareQuotes(posts, size));
+                    })
+                    .catch((err) => {
+                        return res.status(400).send(err);
+                    });
+            }
+            return data.posts.getAll()
+                .then((posts) => {
+                    return res
+                        .status(200)
+                        .send(prepareQuotes(posts));
+                })
+                .catch((err) => {
+                    return res.status(400).send(err);
+                });
+        },
 
     };
 
