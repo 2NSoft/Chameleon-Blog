@@ -1,0 +1,33 @@
+<div id="homeCarousel" class="carousel slide" data-ride="carousel">
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    {{#each posts}}
+    <div class="item {{#if @first}} active {{/if}} carousel-item">
+      <img src="./uploads/posts/{{_id}}.jpeg" alt="{{title}}" style="width:100%;">
+      <div class="carousel-caption">
+        <h3 class="carousel-title">{{title}}</h3>
+        <p class="carousel-text">{{text}}</p>
+        <button class="carousel-button" data-post="{{_id}}">Read More</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+
+  <div class="carousel-inner-indicators"> 
+    <ol class="carousel-indicators">
+      {{#each posts}}
+      <li data-target="#homeCarousel" data-slide-to="{{@index}}" {{#if @first}} class="active" {{/if}}></li>
+      {{/each}}
+    </ol>
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#homeCarousel" data-slide="prev">
+      <img src="./images/carousel-arrow-left.png">
+      <span class="sr-only">Previous</span>
+    </a>
+  <a class="right carousel-control" href="#homeCarousel" data-slide="next">
+      <img src="./images/carousel-arrow-right.png">
+      <span class="sr-only">Next</span>
+    </a>
+</div>

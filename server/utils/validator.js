@@ -51,6 +51,12 @@ class Validator {
             Validator.password( password ) &&
             Validator.email( email );
     }
+
+    static validatePost( {} ) {
+        const Reminder = 'ToDo!';
+        // fill in validation here
+        return true;
+    }
 }
 
 module.exports = Validator;

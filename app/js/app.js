@@ -30,10 +30,13 @@ const router = new Navigo(root, useHash, hash);
 // Setting up routes
 router
     .on('/', () => {
-        router.navigate('/home');
+        router.navigate('#/home');
     })
     .on('/home', () => {
-        return homeController();
+        return homeController()
+            .catch( (err) => {
+                router.navigate('/400');
+            });
     })
     .resolve();
 

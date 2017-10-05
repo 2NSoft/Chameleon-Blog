@@ -36,7 +36,7 @@
                 </form>
                 <div class="collapse navbar-collapse" id="nav-collapse">
                     <ul class="nav navbar-nav navbar-right shadowed-text">
-                        <li><a href="#" class="isActive">Home</a></li>
+                        <li><a href="/home" class="isActive" data-navigo>Home</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">Blog</a></li>
@@ -44,19 +44,20 @@
                 </div>
             </div>
         </nav>
+
+        <main id='app-container'></main>
+        
+        <footer></footer>
+
     </div>
-
-    <main id='app-container'></main>
-
-    <footer></footer>
 
     <script src='./libs/jquery/dist/jquery.min.js'></script>
     <script src='./libs/tether/dist/js/tether.min.js'></script>
     <script src='./libs/bootstrap/dist/js/bootstrap.min.js'></script>
 
-  <!-- Systemjs js setup-->
-  <script src="./libs/systemjs/dist/system.js"></script>
-  <script src="js/configs/system-config.js"></script>
+    <!-- Systemjs js setup-->
+    <script src="./libs/systemjs/dist/system.js"></script>
+    <script src="js/configs/system-config.js"></script>
 </body>
 
 </html>

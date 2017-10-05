@@ -1,5 +1,7 @@
 @require 'mixins/globals'
 
+.navbar-default
+    background-color: white;
 
 .nav-brand
     display: flex;
@@ -69,6 +71,7 @@
             active()
             a   
                 active()
+                padding: 0;
 
 nav 
     height: 96px;
@@ -103,8 +106,9 @@ nav
         ul 
             margin-top: 116px;
             li 
-                padding: 0;
                 border-bottom: 1px solid text-color-search;
+                background: #ffffff;
+                z-index: 1;
                 &:first-child
                     border-top: 1px solid text-color-search;
 

@@ -55,6 +55,10 @@ const attach = (app, data) => {
         }
         return controller.updateUser( req, res );
     } );
+
+    app.get( '/api/v1/posts', ( req, res ) => {
+        return controller.getPosts( req, res );
+    });
 };
 
 module.exports = attach;

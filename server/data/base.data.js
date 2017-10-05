@@ -92,6 +92,17 @@ class BaseData {
             });
     }
 
+    getRandom( size ) {
+        return this.collection.aggregate( [{ $sample: { size } }] )
+        .toArray()
+        .then( ( models ) => {
+            models = models.map( ( model ) => {
+                return this.ModelClass.toViewModel( model );
+            } );
+            return models;
+        } );
+    }
+
     _isModelValid(model) {
         return this.validator.isValid(model);
     }

@@ -1,0 +1,119 @@
+@require 'mixins/globals'
+
+
+#homeCarousel
+    height: 400px;
+    overflow: visible;
+    z-index: 0;
+    @media screen and (max-width: 768px)
+        height: 256px;
+    @media screen and (max-width: 576px)
+        height: 134px;
+    .carousel-inner
+        height: 330px;
+        top: -15px;
+        @media screen and (max-width: 768px)
+            height: 220px;
+        @media screen and (max-width: 576px)
+            height: 110px;
+        .carousel-item
+            height: 100%;
+    .carousel-control
+        top: -15px;
+        height: 330px;
+        width: 40px;
+        background-image: none;
+        @media screen and (max-width: 768px)
+            height: 220px;
+        @media screen and (max-width: 576px)
+            height: 110px;
+        @media screen and (max-width: 310px)
+            width: auto;
+        allowVerticalAlign()
+        img 
+            display: inline-block;
+            vertical-align: middle;
+    .carousel-control.left
+        text-align: left;
+        left: -7px;
+    .carousel-control.right
+        text-align: right;
+        right: -7px;
+    .carousel-inner-indicators
+        position: relative;
+        top: -15px;
+        height: 70px;
+        allowVerticalAlign()
+        .carousel-indicators
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            z-index: 15;
+            width: 100%;
+            padding-left: 0;
+            margin-left: 0;
+            text-align: center;
+            list-style: none;
+            bottom: 0px;
+            left: 0;
+            li         
+                @media screen and (max-width: 768px)
+                    margin: 0px 15px;
+                width: 11px;
+                height: 11px;
+                background-image: url("../images/carousel-bullet-inactive.png");
+            li.active
+                width: 12px;
+                height: 12px;
+                background-image: url("../images/carousel-bullet-active.png");
+    .carousel-caption
+        width: 415px;
+        height: 235px;
+        position: absolute;
+        bottom: 48px;
+        background-color: bg-color-transparent-black;
+        padding: 32px 28px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        left: 51.2%;
+        @media screen and (max-width: 992px)
+            left: 35%;
+        @media screen and (max-width: 768px)
+            height: 150px;
+            bottom: 30px;
+            left: 25%;
+        @media screen and (max-width: 576px)
+            display: none;
+        .carousel-title
+            margin: 0;
+            padding: 0px 117px 0px 0px;
+            @media screen and (max-width: 768px)
+                padding: 0;
+            font-size: 28px;
+            font-family: "Kreon", serif;
+            font-weight: 300;
+            color: white;
+            text-align: left;
+        .carousel-text
+            height: 100%;
+            overflow: hidden;
+            display: block;
+            margin: 0px;
+            padding-top: 5px;
+            text-align: left;
+            font-family: "Droid Sans", sans-serif;
+            font-size: 12px;
+            line-height: 20px;
+            @media screen and (max-width: 768px)
+                display: none;
+        .carousel-button
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            background-color: bg-color-transparent-black;
+            color: text-color-carousel-button;
+            font-family: "Kreon", serif;
+            font-weight: 300;
+            padding: 5px 10px;
+            border: 0;

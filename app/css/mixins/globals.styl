@@ -1,7 +1,9 @@
-shadow-color = rgb( 229, 229, 229 )
-text-color-search = rgb( 194, 194, 194 )
+shadow-color = rgb( 229, 229, 229 );
+text-color-search = rgb( 194, 194, 194 );
 text-color-menu-inactive = rgb( 57, 57, 57 );
-text-color-menu-active = rgb( 66, 125, 139 )
+text-color-menu-active = rgb( 66, 125, 139 );
+text-color-carousel-button = rgb( 123, 146, 151 );
+bg-color-transparent-black = rgba( 0, 0, 0, 0.59 );
 
 a
     text-decoration: none !important;
@@ -9,10 +11,17 @@ a
     text-shadow: 1px 1px shadow-color
 
 .content-container
-    max-width: 960px;
-    padding: 0px;
+    max-width: 974px;
+    padding: 0px 7px;
 active()
     .isActive
         color: text-color-menu-active !important;
     &:hover
         color: text-color-menu-active !important;
+
+allowVerticalAlign()
+    &:before 
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;

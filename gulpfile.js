@@ -140,11 +140,11 @@ gulp.task( 'copy:templates', ['clear:templates'], () => {
 });
 
 gulp.task('clear:uploads', () => {
-    return del(['./public/uploads/*']);
+    return del(['./public/uploads/**/*']);
 });
 
 gulp.task( 'copy:uploads', ['clear:uploads'], () => {
-    return gulp.src( ['./app/uploads/*'] )
+    return gulp.src( ['./app/uploads/**/*'] )
         .pipe( gulp.dest('./public/uploads') );
 });
 
