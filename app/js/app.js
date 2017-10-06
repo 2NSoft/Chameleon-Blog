@@ -35,6 +35,7 @@ router
     .on('/home', () => {
         return homeController()
             .catch( (err) => {
+                console.log(err);
                 router.navigate('/400');
             });
     })

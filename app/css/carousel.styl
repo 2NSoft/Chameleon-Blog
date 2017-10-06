@@ -5,29 +5,29 @@
     height: 400px;
     overflow: visible;
     z-index: 0;
-    @media screen and (max-width: 768px)
+    @media screen and (max-width: 767px)
         height: 256px;
-    @media screen and (max-width: 576px)
+    @media screen and (max-width: 575px)
         height: 134px;
     .carousel-inner
         height: 330px;
         top: -15px;
-        @media screen and (max-width: 768px)
+        @media screen and (max-width: 767px)
             height: 220px;
-        @media screen and (max-width: 576px)
+        @media screen and (max-width: 575px)
             height: 110px;
         .carousel-item
             height: 100%;
     .carousel-control
         top: -15px;
         height: 330px;
-        width: 40px;
+        width: 50px;
         background-image: none;
-        @media screen and (max-width: 768px)
+        @media screen and (max-width: 767px)
             height: 220px;
-        @media screen and (max-width: 576px)
+        @media screen and (max-width: 575px)
             height: 110px;
-        @media screen and (max-width: 310px)
+        @media screen and (max-width: 309px)
             width: auto;
         allowVerticalAlign()
         img 
@@ -43,7 +43,10 @@
         position: relative;
         top: -15px;
         height: 70px;
-        allowVerticalAlign()
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         .carousel-indicators
             display: inline-block;
             vertical-align: middle;
@@ -57,8 +60,8 @@
             bottom: 0px;
             left: 0;
             li         
-                @media screen and (max-width: 768px)
-                    margin: 0px 15px;
+                @media screen and (max-width: 767px)
+                    margin: 15px 15px;
                 width: 11px;
                 height: 11px;
                 background-image: url("../images/carousel-bullet-inactive.png");
@@ -77,18 +80,18 @@
         display: flex;
         flex-direction: column;
         left: 51.2%;
-        @media screen and (max-width: 992px)
+        @media screen and (max-width: 991px)
             left: 35%;
-        @media screen and (max-width: 768px)
+        @media screen and (max-width: 767px)
             height: 150px;
             bottom: 30px;
             left: 25%;
-        @media screen and (max-width: 576px)
+        @media screen and (max-width: 575px)
             display: none;
         .carousel-title
             margin: 0;
             padding: 0px 117px 0px 0px;
-            @media screen and (max-width: 768px)
+            @media screen and (max-width: 767px)
                 padding: 0;
             font-size: 28px;
             font-family: "Kreon", serif;
@@ -104,8 +107,8 @@
             text-align: left;
             font-family: "Droid Sans", sans-serif;
             font-size: 12px;
-            line-height: 20px;
-            @media screen and (max-width: 768px)
+            line-height: 20px; 
+            @media screen and (max-width: 767px)
                 display: none;
         .carousel-button
             position: absolute;

@@ -1,0 +1,81 @@
+@require 'mixins/globals';
+
+.wrapper-card-image
+    position: relative;
+    width: 240px;
+    height: 125px;
+    @media screen and (max-width:991px)
+        float: left;
+        margin: 0px 10px 5px 0px;
+    @media screen and (max-width:767px)
+        width: 145px;
+        height: 75px;
+    padding: 5px;
+    border-right: 1px solid border-color-card;
+    border-bottom: 1px solid border-color-card;
+    >img
+        width: 230px;
+        height: 115px;
+        @media screen and (max-width:767px)
+            width: 135px;
+            height: 65px;
+    .card-control
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img 
+            opacity: 0;
+            transition: opacity .5s;
+        &:hover
+            img 
+                opacity: 1;
+.wrapper-card
+    height: 280px;
+    padding: 0px 50px 0px 40px;
+    @media screen and (max-width:991px)
+        height: 200px;
+        padding: 5px 20px 5px 20px;
+        text-align: justify;
+        margin-bottom: 10px;
+        border-bottom: 1px solid border-color-card;
+        
+    overflow: hidden;
+    text-overflow:ellipsis;
+    @media screen and (min-width: 992px)
+        &:first-of-type
+            padding-left: 65px;
+            padding-right: 25px;
+        &:nth-of-type(3)
+            padding-left: 25px;
+            padding-right: 65px;
+    .wrapper-card-heading
+        height: 57px; 
+        font-family: "Kreon", serif;
+        font-weight: 300;
+        font-size: 1.42857em;
+        color: black;
+        padding: 27px 0px 10px;
+        margin: 0;
+        overflow: hidden;
+        @media screen and (max-width:991px)
+            display: none;
+    p  
+        width: 100%
+        height: 100%;
+        padding: 5px 5px;
+        text-align: left;
+        font-family: "Droid Sans", sans-serif;
+        font-size: 0.85714em;
+        color: text-color-light-grey;
+        line-height: 20px; 
+        margin-top: 10px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        @media screen and (max-width:991px)
+            display: inline;
