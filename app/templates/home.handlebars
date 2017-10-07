@@ -2,8 +2,34 @@
 <section class="row main-quote"> 
     {{>quote}}
 </section>
-<section class="row main-cards">
-    {{#each cards}}
-        {{>card }}
-    {{/each}}
-</section>
+<div class="container-fluid main-inner-wrapper">
+    <section class="row main-cards">
+        {{#each cards}}
+            {{>card }}
+        {{/each}}
+    </section>
+    <section class="row main-widgets">
+        {{>list quotes}}
+    </section>
+
+    <section class="row home-footer">
+        <article class="col-sm-3 wrapper-copyright-widget">
+            <a class="nav-brand" href="/home" data-navigo>
+                <img src="./images/Logo.png" alt="logo">
+                <p class="logo-text-container">
+                    <span class="nav-logo-text">Chameleon</span><br>
+                    <span class="nav-slogan">A blog to remember</span>
+                </p>
+            </a>
+            <p class="wrapper-copyright">
+                &copy; Chameleon Theme 2010
+            </p>
+            <p class="wrapper-copyright-text">
+                Curabitur blandit rutrum pharetra. Donec dictum felis eu eros pretium vulputate. Etiam quis nulla ac turpis molestie tempus et in purus. Suspendisse potenti. Integer accumsan accumsan est, ac accumsan nunc sollicitudin id. Pellentesque tortor lectus, faucibus vitae fermentum vitae, laoreet sit amet erat. Cras luctus, turpis a suscipit venenatis, lorem lectus bibendum neque, quis congue dui tellus in lorem. Praesent rhoncus euismod elementum. Pellentesque tempor, metus quis dignissim imperdiet, risus mi volutpat massa, ut consequat eros lacus ultricies sapien. Phasellus lobortis blandit nunc, sed vulputate enim vehicula vitae. Proin sed risus leo, eget commodo justo. Duis bibendum auctor justo, nec pulvinar lectus imperdiet non. Suspendisse mollis quam vitae dolor dignissim feugiat. Sed tortor felis, congue quis ullamcorper eu, malesuada a odio. In consequat massa sit amet nisl cursus ullamcorper.
+            </p>
+        </article>
+        {{>list posts}}
+        {{>list text}}
+        {{>list comments}}
+    </section>
+</div>

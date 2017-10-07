@@ -139,6 +139,88 @@ const init = (data) => {
                 });
         },
 
+        getLists(req, res) {
+            const size = req.query.random || 6;
+            const listType = req.query.type;
+            const prepareList = (rawList) => {
+                let list = [];
+                switch (listType) {
+                    case 'comments': {
+                        list = rawList.map( (el) => {
+                            return {
+                                text: el.text,
+                                postId: el.postId,
+                             };
+                         });
+                        return list;
+                    }
+                    case 'posts': {
+                        list = rawList.map( (el) => {
+                            return {
+                                text: el.title,
+                                postId: el._id,
+                             };
+                         });
+                        return list;
+                    }
+                    case 'quotes': {
+                        rawList
+                            .map( (el) => {
+                                const quoteList = [];
+                                el.quotes.forEach( ( quote ) => {
+                                    quoteList.push( {
+                                        text: quote,
+                                        postId: el._id,
+                                    });
+                                });
+                                return quoteList;
+                             })
+                             .forEach( (quote) => {
+                                list = list.concat( quote );
+                            });
+                        while (list.length > size) {
+                            list.splice(Math.floor(
+                                Math.random() * (list.length - 1)), 1);
+                        }
+                        return list;
+                    }
+                    case 'text': {
+                        return [{
+                            text: rawList[0].text,
+                            postId: rawList[0]._id,
+                        }];
+                    }
+                    default: {
+                        return 'Incorect type specified.';
+                    }
+                }
+            };
+            if (!listType) {
+                return res.status(400).send('Type not specified!');
+            }
+            const source =
+                ( listType === 'comments' ) ? data.comments : data.posts;
+            if (req.query.random) {
+                return source.getRandom(+size)
+                    .then((posts) => {
+                        return res
+                            .status(200)
+                            .send(prepareList(posts, size));
+                    })
+                    .catch((err) => {
+                        return res.status(400).send(err);
+                    });
+            }
+            return source.filter({}, size)
+                .then((posts) => {
+                    return res
+                        .status(200)
+                        .send(prepareList(posts));
+                })
+                .catch((err) => {
+                    return res.status(400).send(err);
+                });
+        },
     };
 
     return controller;

@@ -17,6 +17,7 @@ System.config({
         'carouselHelper': 'js/helpers/carousel.helper.js',
         'quoteHelper': 'js/helpers/quote.helper.js',
         'cardHelper': 'js/helpers/card.helper.js',
+        'listHelper': 'js/helpers/list.helper.js',
 
         // Controllers
         'homeController': 'js/controllers/homeController.js',

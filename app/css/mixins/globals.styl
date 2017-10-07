@@ -4,17 +4,12 @@ text-color-menu-inactive = rgb( 57, 57, 57 );
 text-color-menu-active = rgb( 66, 125, 139 );
 text-color-carousel-button = rgb( 123, 146, 151 );
 text-color-light-grey = rgb( 146, 146, 146 ); 
+text-color-light-grey-footer = rgb( 205, 205, 205 ); 
+text-color-footer-slogan = rgb( 102, 146, 156 );
+text-color-copyright = rgb( 113, 113, 113 );
 bg-color-transparent-black = rgba( 0, 0, 0, 0.59 );
 border-color-card = rgb( 212, 212, 212 );
 
-a
-    text-decoration: none !important;
-.shadowed-text 
-    text-shadow: 1px 1px shadow-color
-
-.content-container
-    max-width: 974px;
-    padding: 0px 7px;
 active()
     .isActive
         color: text-color-menu-active !important;
@@ -27,3 +22,41 @@ allowVerticalAlign()
         display: inline-block;
         vertical-align: middle;
         height: 100%;
+
+headingText()
+    font-family: "Kreon", serif;
+    font-weight: 300;
+    font-size: 1.42857em;
+    color: black;
+bodyText()
+    font-family: "Droid Sans", sans-serif;
+    font-size: 0.85714em;
+    color: text-color-light-grey;
+
+a
+    text-decoration: none !important;
+
+.row
+    margin-bottom: 30px;
+.shadowed-text 
+    text-shadow: 1px 1px shadow-color
+
+.content-container
+    max-width: 974px;
+    padding: 0px 7px;
+#app-container
+    margin-bottom: 30px;
+
+.main-inner-wrapper
+    padding: 0px 55px;
+    @media screen and (max-width:767px)
+        padding: 0px;
+
+footer
+    bodyText();
+    padding: 0px 55px;
+    text-align: right;
+    color: text-color-light-grey-footer;
+    strong
+        color: text-color-light-grey;
+        font-weight: normal;

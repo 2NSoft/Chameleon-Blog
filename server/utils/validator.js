@@ -57,6 +57,12 @@ class Validator {
         // fill in validation here
         return true;
     }
+
+    static validateComment( {} ) {
+        const Reminder = 'ToDo!';
+        // fill in validation here
+        return true;
+    }
 }
 
 module.exports = Validator;

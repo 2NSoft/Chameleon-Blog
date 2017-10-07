@@ -63,6 +63,10 @@ const attach = (app, data) => {
     app.get( '/api/v1/quotes', ( req, res ) => {
         return controller.getQuotes( req, res );
     });
+
+    app.get( '/api/v1/lists', ( req, res ) => {
+        return controller.getLists( req, res );
+    });
 };
 
 module.exports = attach;

@@ -23,27 +23,32 @@ import { get as homeController } from 'homeController';
 
 // Navigo setup
 const root = null;
-const useHash = false;
-const hash = '#!';
+const useHash = true;
+const hash = '#';
 const router = new Navigo(root, useHash, hash);
 
 // Setting up routes
 router
-    .on('/', () => {
-        router.navigate('#/home');
+    .on({
+        '/': () => {
+            router.navigate('/home');
+        },
+        '/home': () => {
+            return homeController()
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        '/about': () => {
+            console.log( 'about');
+        },
+        '/400': () => {
+        },
     })
-    .on('/home', () => {
-        return homeController()
-            .catch( (err) => {
-                console.log(err);
-                router.navigate('/400');
-            });
+    .notFound( function() {
+        console.log( 'Not found' );
     })
     .resolve();
-
-router.notFound(function() {
-    // invalidController();
-});
 
 // User.initAuthStatusChange();
 
@@ -55,5 +60,13 @@ router.notFound(function() {
 //     }
 // });
 
+$('.navbar-collapse ul').on('click', (ev) => {
+    $(ev.currentTarget)
+        .find('.isActive')
+        .removeClass('isActive');
+    $(ev.target).addClass('isActive');
+});
 
-export { router };
+export {
+    router,
+};

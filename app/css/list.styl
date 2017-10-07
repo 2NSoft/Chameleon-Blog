@@ -1,0 +1,36 @@
+@require 'mixins/globals';
+
+.wrapper-list
+    padding-right: 0px; 
+    overflow: hidden;
+    height: 14em;
+    @media screen and (max-width:767px)
+        padding: 5px 20px 5px 20px;
+    .list-heading
+        headingText();
+    ul
+        padding-left: 0px;
+        li  
+            active();
+            display: inline-block;
+            overflow-x: hidden;
+            white-space: nowrap;
+            height: 1.49em;
+            width: 100%;
+            margin: 0px auto;
+            a
+                active();
+                bodyText();
+                overflow-x: hidden;
+                white-space: nowrap;
+                width: 100%;
+
+                &::before
+                    content: '\2022';
+                    margin: auto 10px auto 3px;
+                    font-size: 1em;
+    p
+        active();
+        a
+            active();
+            bodyText();        

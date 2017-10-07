@@ -37,9 +37,11 @@
                 opacity: 1;
 .wrapper-card
     height: 280px;
-    padding: 0px 50px 0px 40px;
+    width: 265px;
+    padding: 0px 10px;
     @media screen and (max-width:991px)
         height: 200px;
+        width: auto;
         padding: 5px 20px 5px 20px;
         text-align: justify;
         margin-bottom: 10px;
@@ -47,35 +49,22 @@
         
     overflow: hidden;
     text-overflow:ellipsis;
-    @media screen and (min-width: 992px)
-        &:first-of-type
-            padding-left: 65px;
-            padding-right: 25px;
-        &:nth-of-type(3)
-            padding-left: 25px;
-            padding-right: 65px;
-    .wrapper-card-heading
-        height: 57px; 
-        font-family: "Kreon", serif;
-        font-weight: 300;
-        font-size: 1.42857em;
-        color: black;
+    .card-heading
+        height: 57px;
+        headingText();
         padding: 27px 0px 10px;
         margin: 0;
         overflow: hidden;
         @media screen and (max-width:991px)
             display: none;
-    p  
+    .card-text  
         width: 100%
         height: 100%;
         padding: 5px 5px;
         text-align: left;
-        font-family: "Droid Sans", sans-serif;
-        font-size: 0.85714em;
-        color: text-color-light-grey;
+        bodyText();
         line-height: 20px; 
         margin-top: 10px;
         overflow: hidden;
-        text-overflow:ellipsis;
         @media screen and (max-width:991px)
             display: inline;

@@ -1,0 +1,34 @@
+@require 'mixins/globals'
+.wrapper-copyright-widget
+    padding-top: 32 + image-size('./../images/Logo.png')[1] * 0.625;
+    padding-left: 2px;
+    height: 14.5em;
+    overflow: hidden;
+    .nav-brand
+        width: 210px;
+        line-height: 1em;
+        top: 20px;
+        left: 2px;
+        img 
+            width: image-size('./../images/Logo.png')[0] * 0.625;
+            height: image-size('./../images/Logo.png')[1] * 0.625;
+        .logo-text-container
+            margin: 5px 5px;
+            .nav-logo-text
+                headingText();
+                text-transform: uppercase
+
+            .nav-slogan
+                font-family: "Droid Sans", sans-serif;
+                font-size: 0.65em;
+                color: text-color-footer-slogan;
+    .wrapper-copyright
+        font-family: "Kreon", serif;
+        font-size: 12/14 em;
+        color: text-color-copyright;
+        margin-bottom: 0;
+    .wrapper-copyright-text
+        padding: 0;
+        text-align: left;
+        bodyText();
+        line-height: 20px; 
