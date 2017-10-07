@@ -9,9 +9,9 @@ System.config({
 
         // App files
         'app': 'js/app.js',
-        'templates': 'js/templates.js',
-        'data': 'js/data.js',
-        'user': 'js/user.js',
+        'templates': 'js/utils/templates.js',
+        'data': 'js/utils/data.js',
+        'user': 'js/utils/user.js',
         'constants': 'js/helpers/constants.js',
         'validator': 'js/helpers/validator.js',
         'carouselHelper': 'js/helpers/carousel.helper.js',
@@ -21,6 +21,7 @@ System.config({
 
         // Controllers
         'homeController': 'js/controllers/homeController.js',
+        'signinController': 'js/controllers/signinController.js',
 
         // Library files
         'jquery': './libs/jquery/dist/jquery.min.js',

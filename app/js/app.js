@@ -4,7 +4,7 @@
 import Navigo from 'navigo';
 
 // Users and data
-// import User from 'userController';
+import user from 'user';
 // import * as data from 'data';
 
 // Helpers
@@ -14,12 +14,8 @@ import Navigo from 'navigo';
 
 // Controllers
 import { get as homeController } from 'homeController';
-// import {get as invalidController} from 'invalidController';
-// import {get as registerController} from 'registerController';
-// import {get as signInController} from 'signInController';
-// import {get as currentUserController} from 'currentUserController';
-// import {get as collectionManageController} from 'collectionManageController';
-// import {get as viewItemsController} from 'viewItemsController';
+import { get as signinController } from 'signinController';
+
 
 // Navigo setup
 const root = null;
@@ -39,6 +35,12 @@ router
                     console.log(err);
                 });
         },
+        '/sign-in': () => {
+            return signinController()
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
         '/about': () => {
             console.log( 'about');
         },
@@ -50,15 +52,26 @@ router
     })
     .resolve();
 
-// User.initAuthStatusChange();
+user.onStatusChange = (usr) => {
+    const signInBtn = $('#sign-in-btn');
+    if (usr.signedIn) {
+        signInBtn.text('Sign out');
+        signInBtn.attr('href', '');
+        router.navigate('/home');
+    } else {
+        signInBtn.text('Sign in');
+        signInBtn.attr('href', '/sign-in');
+    }
+};
 
-// // Changes Sign in button to Sign out, when user signs in
-// $('#sign-in-btn').click(() => {
-//     if ($('#sign-in-btn').text() === 'Sign out') {
-//         User.signOut();
-//         toastr.success(CONSTANTS.USER_SIGNED_OUT);
-//     }
-// });
+user.checkStatus();
+
+$('#sign-in-btn').click( (ev) => {
+    if ($('#sign-in-btn').text() === 'Sign out') {
+        ev.preventDefault();
+        user.signOut();
+    }
+});
 
 $('.navbar-collapse ul').on('click', (ev) => {
     $(ev.currentTarget)

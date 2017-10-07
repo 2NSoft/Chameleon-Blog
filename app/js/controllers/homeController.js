@@ -5,6 +5,7 @@ import { registerCarousel } from 'carouselHelper';
 import { registerQuote } from 'quoteHelper';
 import { registerCard } from 'cardHelper';
 import { registerList } from 'listHelper';
+import data from 'data';
 
 const $appContainer = $('#app-container');
 
@@ -16,15 +17,7 @@ export function get(params) {
         registerList(),
     ])
         .then( () => {
-            return Promise.all( [
-                $.get('/api/v1/posts?random=4'),
-                $.get('/api/v1/quotes?random=1'),
-                $.get('/api/v1/posts?random=3'),
-                $.get('/api/v1/lists?type=quotes'),
-                $.get('/api/v1/lists?type=posts'),
-                $.get('/api/v1/lists?type=text&random=1'),
-                $.get('/api/v1/lists?type=comments'),
-            ]);
+            return data.getHomeData();
         })
         .then( ([
             carouselPosts,
