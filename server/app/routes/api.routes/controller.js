@@ -80,6 +80,12 @@ const init = (data) => {
                         return res.status(400).send(err);
                     });
             }
+            if (req.query.id) {
+                return data.posts.findById(req.query.id)
+                    .then( (post) => {
+                        return res.status(200).send(post);
+                    });
+            }
             return data.posts.getAll()
                 .then((posts) => {
                     return res.status(200).send(posts);

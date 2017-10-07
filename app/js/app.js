@@ -1,4 +1,4 @@
-/* globals $ */
+/* globals $ toastr */
 
 // Routers
 import Navigo from 'navigo';
@@ -15,7 +15,8 @@ import user from 'user';
 // Controllers
 import { get as homeController } from 'homeController';
 import { get as signinController } from 'signinController';
-
+import { get as blogController } from 'blogController';
+import { get as defaultController } from 'defaultController';
 
 // Navigo setup
 const root = null;
@@ -23,6 +24,7 @@ const useHash = true;
 const hash = '#';
 const router = new Navigo(root, useHash, hash);
 
+defaultController(router);
 // Setting up routes
 router
     .on({
@@ -30,15 +32,18 @@ router
             router.navigate('/home');
         },
         '/home': () => {
-            return homeController()
+            return homeController(router)
                 .catch((err) => {
-                    console.log(err);
+                    toastr.error(err);
                 });
+        },
+        '/blog/:id': (params) => {
+            blogController(params);
         },
         '/sign-in': () => {
             return signinController()
                 .catch((err) => {
-                    console.log(err);
+                    toastr.error(err);
                 });
         },
         '/about': () => {
@@ -56,7 +61,7 @@ user.onStatusChange = (usr) => {
     const signInBtn = $('#sign-in-btn');
     if (usr.signedIn) {
         signInBtn.text('Sign out');
-        signInBtn.attr('href', '');
+        signInBtn.attr('href', '/home');
         router.navigate('/home');
     } else {
         signInBtn.text('Sign in');

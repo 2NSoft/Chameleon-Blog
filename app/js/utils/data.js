@@ -11,6 +11,21 @@ const getHomeData = ()=> {
     ]);
 };
 
+const getFooterData = () => {
+    return Promise.all( [
+        $.get('/api/v1/lists?type=posts'),
+        $.get('/api/v1/lists?type=text&random=1'),
+        $.get('/api/v1/lists?type=comments'),
+    ]);
+};
+const getBlogData = (id) => {
+    return Promise.all([
+        $.get(`/api/v1/posts?id=${id}`),
+    ]);
+};
+
 module.exports = {
     getHomeData,
+    getBlogData,
+    getFooterData,
 };

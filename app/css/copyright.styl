@@ -1,7 +1,9 @@
 @require 'mixins/globals'
 .wrapper-copyright-widget
     padding-top: 32 + image-size('./../images/Logo.png')[1] * 0.625;
-    padding-left: 2px;
+    padding-left: 10px;
+    @media screen and (max-width:767px)
+        padding: 5px 20px 5px 20px;
     height: 14.5em;
     overflow: hidden;
     .nav-brand
@@ -9,6 +11,14 @@
         line-height: 1em;
         top: 20px;
         left: 2px;
+        @media screen and (max-width:767px)
+            position: relative;
+            top: 10px;
+            float: left;
+            width: 170px
+            margin-bottom: 5px;
+        @media screen and (max-width: 309px)
+            width: 100%;
         img 
             width: image-size('./../images/Logo.png')[0] * 0.625;
             height: image-size('./../images/Logo.png')[1] * 0.625;

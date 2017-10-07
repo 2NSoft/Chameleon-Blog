@@ -8,6 +8,7 @@ text-color-light-grey-footer = rgb( 205, 205, 205 );
 text-color-footer-slogan = rgb( 102, 146, 156 );
 text-color-copyright = rgb( 113, 113, 113 );
 bg-color-transparent-black = rgba( 0, 0, 0, 0.59 );
+bg-color-footer = rgb( 249, 249, 249 0);
 border-color-card = rgb( 212, 212, 212 );
 
 active()
@@ -44,19 +45,13 @@ a
 .content-container
     max-width: 974px;
     padding: 0px 7px;
-#app-container
-    margin-bottom: 30px;
-
 .main-inner-wrapper
     padding: 0px 55px;
     @media screen and (max-width:767px)
         padding: 0px;
 
-footer
-    bodyText();
-    padding: 0px 55px;
-    text-align: right;
-    color: text-color-light-grey-footer;
-    strong
-        color: text-color-light-grey;
-        font-weight: normal;
+#app-container
+    background-color: white;
+body 
+    background-image: url('../../images/background.jpg') 
+    background-repeat: repeat;

@@ -1,4 +1,4 @@
-/* globals $*/
+/* globals $ toastr */
 /* eslint-disable no-undefined */
 class User {
     constructor() {
@@ -7,7 +7,7 @@ class User {
         this.email = undefined;
         this.signedIn = undefined;
     }
-    _setUser(userData) {
+    _setUser(userData, change=true) {
         this.signedIn = !!userData;
         if (this.signedIn) {
             this.userName = userData.username;
@@ -18,26 +18,30 @@ class User {
             this.id = undefined;
             this.email = undefined;
         }
-        if (this.onStatusChange) {
+        if (this.onStatusChange && change) {
             this.onStatusChange(this);
         }
     }
     checkStatus() {
-        $.get('/api/v1/auth')
+        return $.get('/api/v1/auth')
             .then((userData) => {
-                this._setUser(userData);
+                this._setUser(userData, false);
+                return Promise.resolve( JSON.stringify( this ) );
             })
             .catch(() => {
-                this._setUser(null);
+                this._setUser(null, false);
+                return Promise.resolve( JSON.stringify( this ) );
             });
     }
     signIn(userSignInData) {
         $.post('/api/v1/auth', userSignInData)
             .then((userData) => {
                 this._setUser(userData);
+                toastr.success(`Welcome: ${this.userName}`);
             })
-            .catch(() => {
+            .catch((err) => {
                 this._setUser(null);
+                toastr.error(err.responseText);
             });
     }
     signOut() {
@@ -45,10 +49,11 @@ class User {
             method: 'DELETE',
         })
             .then( ()=> {
+                toastr.success(`You have successfully signed out!`);
                 this._setUser(null);
             })
             .catch( (err) => {
-                console.log(err);
+                toastr.error(err.responseText);
             } );
     }
 }

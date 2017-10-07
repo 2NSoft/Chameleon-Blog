@@ -9,7 +9,7 @@ import data from 'data';
 
 const $appContainer = $('#app-container');
 
-export function get(params) {
+export function get(router) {
     return Promise.all( [
         registerCarousel(),
         registerQuote(),
@@ -24,9 +24,6 @@ export function get(params) {
             quotes,
             cards,
             quotesWidgetData,
-            recentPosts,
-            textWidgetData,
-            recentComments,
             ]) => {
             return loadTemplate( 'home', {
                 carouselPosts,
@@ -36,20 +33,6 @@ export function get(params) {
                     items: quotesWidgetData,
                     type: 'From The Blog',
                 },
-                posts: {
-                    items: recentPosts,
-                    type: 'Recent Posts',
-                },
-                text: {
-                    text: textWidgetData[0].text,
-                    _id: textWidgetData[0]._id,
-                    type: 'Text Widget',
-                    skipList: true,
-                },
-                comments: {
-                    items: recentComments,
-                    type: 'Recent Comments',
-                },
             } );
         })
         .then( ( homeTemplate ) => {
@@ -57,5 +40,10 @@ export function get(params) {
             $('.carousel').carousel({
                 interval: 5000,
               });
+            $('[data-post]').click( (ev) => {
+                const id = $(ev.target).attr( 'data-post' ) ||
+                           $(ev.currentTarget).attr( 'data-post' );
+                router.navigate(`/blog/${id}`);
+            });
         });
 }

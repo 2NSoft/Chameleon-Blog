@@ -22,12 +22,14 @@ System.config({
         // Controllers
         'homeController': 'js/controllers/homeController.js',
         'signinController': 'js/controllers/signinController.js',
+        'blogController': 'js/controllers/blogController.js',
+        'defaultController': 'js/controllers/defaultController.js',
 
         // Library files
         'jquery': './libs/jquery/dist/jquery.min.js',
         'navigo': './libs/navigo/lib/navigo.min.js',
         'handlebars': './libs/handlebars/dist/handlebars.min.js',
-
+        'toastr': './libs/toastr/build/toastr.min.js',
     },
 });
 

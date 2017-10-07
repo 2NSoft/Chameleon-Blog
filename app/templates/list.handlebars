@@ -3,12 +3,12 @@
     {{#unless skipList}}
         <ul>
         {{#each items}}
-            <li><a href="/blog/{{_id}}" data-navigo>{{text}}</a></li>
+            <li><a href="#/blog/{{postId}}" data-navigo>{{text}}</a></li>
         {{/each}}
         </ul>
     {{else}}
         <p>
-            <a href="/blog/{{_id}}" data-navigo>
+            <a href="#/blog/{{postId}}" data-navigo>
                 {{text}}
             </a>
         </p>

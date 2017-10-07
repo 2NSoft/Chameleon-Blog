@@ -32,7 +32,7 @@
             text-transform: uppercase;
 .nav-search
     position: absolute;
-    right: 2px;
+    right: 1px;
     top: 1px;
     .input-search
         width: 136px;
@@ -43,19 +43,20 @@
         border: 0;
         padding-left: 12px;
         border-left: 1px solid text-color-search;
+        background-color: bg-color-footer;
         &::placeholder
             font-style: italic;
             text-shadow: 1px 1px shadow-color;
             color: text-color-search;
     .btn-search
         position: absolute;
-        right: 9px;
+        right: 0px;
         top: 7px;
-        width: 16px;
+        width: 24px;
         height: 16px;
         border: 0;
         font-size: 12px;
-        background: rgba( 255, 255, 255, 1 );
+        background: bg-color-footer;;
         color: text-color-search;
         &:hover
             cursor: pointer;
@@ -76,7 +77,8 @@
 
 nav 
     height: 96px;
-
+.navbar
+    margin-bottom: 15px;
 .navbar-default
     border 0;
 
@@ -89,23 +91,21 @@ nav
     .nav-search
         position: absolute;
         right: 2px;
-        top: 87px;
+        top: 75px;
         .input-search
-            border: 0;
+            height: 32px;
             padding-left: 12px;
-            border-left: 1px solid text-color-search;
-            border-top: 1px solid text-color-search;
         .btn-search
-            top: 7px;
+            top: 9px;
     .navbar-toggle
         position: absolute;
         margin: 8px 15px 0px 8px;
-        top: 79px;
-        height: 28px;
+        top: 68px;
+        height: 32px;
         padding: 4px 8px;
     .navbar-collapse
         ul 
-            margin-top: 116px;
+            margin-top: 112px;
             li 
                 border-bottom: 1px solid text-color-search;
                 background: #ffffff;
