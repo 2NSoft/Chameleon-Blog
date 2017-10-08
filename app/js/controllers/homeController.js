@@ -27,7 +27,11 @@ export function get(router) {
             ]) => {
             return loadTemplate( 'home', {
                 carouselPosts,
-                quote: quotes[0],
+                quote: {
+                    title: quotes[0].quote,
+                    subtitle: `by ${quotes[0].author}`,
+                    quoted: true,
+                },
                 cards,
                 quotes: {
                     items: quotesWidgetData,

@@ -21,6 +21,9 @@ const getFooterData = () => {
 const getBlogData = (id) => {
     return Promise.all([
         $.get(`/api/v1/posts?id=${id}`),
+        $.get('/api/v1/lists?type=quotes'),
+        $.get('/api/v1/lists?type=posts&random=6'),
+        $.get('/api/v1/lists?type=posts'),
     ]);
 };
 

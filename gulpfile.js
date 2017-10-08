@@ -165,4 +165,7 @@ gulp.task('compile',
         'compile:css',
     ]));
 
-gulp.task( 'build', ['copy', 'compile'] );
+gulp.task( 'build', ['copy', 'compile'], () => {
+    const beep = '\007';
+    console.log( beep ); //beep
+} );

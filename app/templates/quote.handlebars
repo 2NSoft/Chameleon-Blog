@@ -1,4 +1,4 @@
-<article class="col-12 wrapper-quote" data-quote={{quote.postId}}>
-    <h2>{{quote.quote}}</h2>
-    <p>{{quote.author}}</p>
+<article class="col-12 wrapper-quote {{#if quote.gradiented}}gradiented-quote{{/if}}" data-quote={{quote.postId}}>
+    <h2 {{#if quote.quoted}}class="quoted"{{/if}}>{{quote.title}}</h2>
+    <p {{#if quote.quoted}}class="right-aligned"{{/if}}>{{quote.subtitle}}</p>
 </article>

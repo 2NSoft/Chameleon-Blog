@@ -1,23 +1,26 @@
 @require 'mixins/globals';
 
 .main-quote
-    padding: 0px 7px;
-    margin-bottom: 40px;
+    padding: 0px 40px;
+    @media screen and (max-width: 767px)
+        padding: 15px 23px;
+    //margin-bottom: 40px;
 .wrapper-quote
     font-family: "Kreon", serif;
     font-weight: 300;
-    padding: 10px 38px;
+    padding: 30px 38px;
+    text-align: center;
     h2
-        &::before
-            content: '\201c';
-        &::after 
-            content: '\201d';
         color: black;
         font-size: 2em;
         padding: 0;
         margin: 0;
-        text-align: center;
     p   
         color: text-color-light-grey;
         font-size: 1.42857em;
-        text-align: right;
+
+.gradiented-quote
+    background: rgba(247,247,247,1);
+    background: linear-gradient(to bottom, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 85%, rgba(247,247,247,1) 100%);
+    border-top: 1px solid border-color-footer;
+    border-bottom: 1px solid border-color-footer;

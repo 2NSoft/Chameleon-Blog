@@ -1,4 +1,5 @@
 shadow-color = rgb( 229, 229, 229 );
+border-color-search = rgb( 234, 234, 234 );
 text-color-search = rgb( 194, 194, 194 );
 text-color-menu-inactive = rgb( 57, 57, 57 );
 text-color-menu-active = rgb( 66, 125, 139 );
@@ -8,8 +9,9 @@ text-color-light-grey-footer = rgb( 205, 205, 205 );
 text-color-footer-slogan = rgb( 102, 146, 156 );
 text-color-copyright = rgb( 113, 113, 113 );
 bg-color-transparent-black = rgba( 0, 0, 0, 0.59 );
-bg-color-footer = rgb( 249, 249, 249 0);
+bg-color-footer = rgb( 249, 249, 249 );
 border-color-card = rgb( 212, 212, 212 );
+border-color-footer = rgb( 234, 234, 234 );
 
 active()
     .isActive
@@ -55,3 +57,11 @@ a
 body 
     background-image: url('../../images/background.jpg') 
     background-repeat: repeat;
+.quoted
+    &::before
+        content: '\201c';
+    &::after 
+        content: '\201d';
+
+.right-aligned
+    text-align: right;
