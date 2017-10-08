@@ -2,14 +2,13 @@
 
 .wrapper-post
     padding-right: 20px;
+    margin: 25px 0px;
     @media screen and (max-width: 767px)
         padding-left: 20px;
     
     .post-title
         margin: 22px 0px;
-        font-family: "Kreon", serif;
-        font-weight: 300;
-        font-size: 2em;
+
     .post-info
         border-top: 1px solid border-color-footer;
         border-bottom: 1px solid border-color-footer;
@@ -34,3 +33,7 @@
     .post-text
         bodyText();
         line-height: 1.42857em;
+
+    &.boxed
+        height: 19.5em;
+        overflow: hidden;

@@ -1,0 +1,55 @@
+@require 'mixins/globals';
+
+.wrapper-comment
+    @media screen and (max-width: 767px)
+        margin-left: 20px;
+        margin-right: 20px;
+    position: relative;
+    height: 170px;
+    border: 1px solid border-color-comment-image;
+    padding: 10px 16px 10px 100px;
+    background: rgba(247,247,247,1);
+    background: linear-gradient(to bottom, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 85%, rgba(247,247,247,1) 100%);
+    margin-bottom: 30px;
+    .comment-header
+        margin-top: 6px;
+        margin-bottom: 3px;
+        height: 1em;
+    .comment-date
+        @media screen and (max-width: 575px)
+            top: auto;
+            right: auto;
+            left: 16px;
+            bottom: 20px;
+        display: block;
+        position: absolute;
+        top: 13px;
+        right: 20px;
+        font-family: Georgia, Times, Times New Roman, serif;
+        font-size: 0.85714em;
+        color: text-color-comment-date;
+
+    .wrapper-comment-image
+        position: absolute;
+        left: 16px;
+        top: 16px;
+        border: 1px solid border-color-comment-image;
+        border-bottom: 1px solid border-color-comment-image-dark;
+        float: left;
+        img 
+            width: 55px;
+            height: 55px;
+            margin: 5px;
+    .comment-text
+        bodyText();
+        line-height: 1.8em;
+        height: 7em;
+        overflow: hidden;
+    button
+        position: absolute;
+        right: 16px;
+        bottom: 10px;
+    .wrapper-baloon
+        position: absolute;
+        right: 44px;
+        bottom: -18px;

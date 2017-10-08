@@ -6,6 +6,7 @@ import data from 'data';
 import dateFormat from 'date';
 import { registerQuote } from 'quoteHelper';
 import { registerLocation } from 'locationHelper';
+import { registerComment } from 'commentHelper';
 import { registerBlogpost } from 'blogPostHelper';
 
 const $appContainer = $('#app-container');
@@ -16,6 +17,7 @@ export function get(params) {
             registerQuote(),
             registerLocation(),
             registerBlogpost(),
+            registerComment(),
         ])
         .then(() => {
             return Promise.all([
@@ -40,6 +42,13 @@ export function get(params) {
                 comments: blogData.comments || [],
                 length: blogData.comments ? '' + blogData.comments.length : '0',
             };
+            blogData.comments.comments =
+                blogData.comments.comments.map( (comment) => {
+                    comment.createdOn =
+                        dateFormat( new Date(comment.createdOn),
+                                    'mmm dd, yyyy');
+                    return comment;
+                } );
             return loadTemplate('blog', {
                 quote: {
                     title: blogData.title,
