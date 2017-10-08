@@ -6,6 +6,7 @@ import data from 'data';
 import dateFormat from 'date';
 import { registerQuote } from 'quoteHelper';
 import { registerLocation } from 'locationHelper';
+import { registerBlogpost } from 'blogPostHelper';
 
 const $appContainer = $('#app-container');
 const menu = $('.navbar-collapse ul');
@@ -14,6 +15,7 @@ export function get(params) {
     return Promise.all([
             registerQuote(),
             registerLocation(),
+            registerBlogpost(),
         ])
         .then(() => {
             return Promise.all([
@@ -32,10 +34,16 @@ export function get(params) {
         ]) => {
             let date = new Date(blogData.createdOn);
             date = dateFormat(date, 'mmm dd, yyyy');
+            blogData.createdOn = date;
+            blogData.titless = true;
+            blogData.comments = {
+                comments: blogData.comments || [],
+                length: blogData.comments ? '' + blogData.comments.length : '0',
+            };
             return loadTemplate('blog', {
                 quote: {
                     title: blogData.title,
-                    subtitle: `Posted by ${blogData.author.name} on ${date} in ${blogData.category.name}`, // eslint-disable-line max-len
+                    subtitle: `Posted by ${blogData.author.name} on ${blogData.createdOn} in ${blogData.category.name}`, // eslint-disable-line max-len
                     gradiented: true,
                 },
                 path: `Home » ${blogData.category.name} » `,

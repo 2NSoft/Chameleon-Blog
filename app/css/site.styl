@@ -1,0 +1,33 @@
+@require 'mixins/globals'
+a
+    text-decoration: none !important;
+
+.row
+    margin-bottom: 30px;
+.shadowed-text 
+    text-shadow: 1px 1px shadow-color
+
+.content-container
+    max-width: 974px;
+    padding: 0px 7px;
+.main-inner-wrapper
+    padding: 0px 55px;
+    border-bottom: 1px solid border-color-footer;
+    @media screen and (max-width:767px)
+        padding: 0px;
+
+#app-container
+    background-color: white;
+body 
+    background-image: url('../../images/background.jpg') 
+    background-repeat: repeat;
+.quoted
+    &::before
+        content: '\201c';
+    &::after 
+        content: '\201d';
+
+.right-aligned
+    text-align: right;
+.main-inner-wrapper.row
+    margin-bottom: 0px;

@@ -1,0 +1,36 @@
+@require 'mixins/globals';
+
+.wrapper-post
+    padding-right: 20px;
+    @media screen and (max-width: 767px)
+        padding-left: 20px;
+    
+    .post-title
+        margin: 22px 0px;
+        font-family: "Kreon", serif;
+        font-weight: 300;
+        font-size: 2em;
+    .post-info
+        border-top: 1px solid border-color-footer;
+        border-bottom: 1px solid border-color-footer;
+        padding: 5px 0px;
+        color: text-color-postinfo;
+        font-size: 1.0714em;
+        margin-bottom: 15px;
+        strong 
+            font-weight: normal;
+            color: text-color-light-grey;
+    .wrapper-post-image
+        border: 1px solid border-color-footer;
+        float: left;
+        margin: 0 30px 20px 0;
+        @media screen and (max-width: 400px)
+            display: inline-block;
+            float: none;
+        img
+            margin: 5px;
+            width: 186px;
+            height: 186px;
+    .post-text
+        bodyText();
+        line-height: 1.42857em;

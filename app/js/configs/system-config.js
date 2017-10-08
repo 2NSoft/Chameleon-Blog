@@ -18,6 +18,7 @@ System.config({
         'quoteHelper': 'js/helpers/quote.helper.js',
         'cardHelper': 'js/helpers/card.helper.js',
         'locationHelper': 'js/helpers/location.helper.js',
+        'blogPostHelper': 'js/helpers/blogPost.helper.js',
         'listHelper': 'js/helpers/list.helper.js',
 
         // Controllers

@@ -78,7 +78,7 @@ gulp.task('compile:css', ['clear:css'], () => {
         autoprefixer({
             browsers: ['last 1 version'],
         }),
-        //cssnano({ minifyFontValues: false, discardUnused: false }),
+        cssnano({ minifyFontValues: false, discardUnused: false }),
     ];
     return gulp.src('./app/css/*.styl')
         .pipe(stylus())

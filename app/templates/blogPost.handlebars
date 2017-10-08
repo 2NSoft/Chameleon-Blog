@@ -1,0 +1,16 @@
+{{log this}}
+<article class="wrapper-post">
+    <h2 class="post-title">
+        {{#unless titless}}
+          {{title}}
+        {{/unless}}
+    </h2>
+    <p class="post-info">
+        Posted by <strong>{{author.name}}</strong> on {{createdOn}} in <strong>{{category.name}}</strong>
+        <span role="separator">|</span> {{comments.length}} Comments
+    </p>
+    <div class="wrapper-post-image">
+        <img src="../uploads/posts/{{_id}}.jpeg" alt="post media">
+    </div>
+    <p class="post-text">{{text}}</p>
+</article>
