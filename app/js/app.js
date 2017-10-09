@@ -16,6 +16,7 @@ import user from 'user';
 import { get as homeController } from 'homeController';
 import { get as signinController } from 'signinController';
 import { get as blogController } from 'blogController';
+import { get as categoryController } from 'categoryController';
 import { get as defaultController } from 'defaultController';
 
 // Navigo setup
@@ -45,6 +46,12 @@ router
         },
         '/blog/:id': (params) => {
             blogController(params, router)
+                .then(()=>{
+                    router.updatePageLinks();
+                });
+        },
+        '/category/:id': (params, query) => {
+            categoryController(params, query, router)
                 .then(()=>{
                     router.updatePageLinks();
                 });

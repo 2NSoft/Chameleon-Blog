@@ -10,15 +10,19 @@
         margin: 22px 0px;
 
     .post-info
+        font-family: "Kreon", serif;
+        font-weight: 300; 
         border-top: 1px solid border-color-footer;
         border-bottom: 1px solid border-color-footer;
         padding: 5px 0px;
         color: text-color-postinfo;
         font-size: 1.0714em;
         margin-bottom: 15px;
-        strong 
-            font-weight: normal;
+        strong, a 
+            font-weight: 300;
             color: text-color-light-grey;
+        a
+            active();
     .wrapper-post-image
         border: 1px solid border-color-footer;
         float: left;
@@ -35,5 +39,11 @@
         line-height: 1.42857em;
 
     &.boxed
-        height: 19.5em;
-        overflow: hidden;
+        margin-bottom: 15px;
+        .post-text
+            line-height: 1.67em;
+            height: 17em;
+            overflow: hidden;
+        .wrapper-post-image
+            @media screen and (max-width: 400px)
+                display: none;

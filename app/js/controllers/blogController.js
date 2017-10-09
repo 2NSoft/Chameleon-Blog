@@ -53,13 +53,14 @@ export function get(params, router) {
                                     'mmm dd, yyyy');
                     return comment;
                 } );
+            blogData.category.root = 'Home';
             return loadTemplate('blog', {
                 quote: {
                     title: blogData.title,
                     subtitle: `Posted by ${blogData.author.name} on ${blogData.createdOn} in ${blogData.category.name}`, // eslint-disable-line max-len
                     gradiented: true,
                 },
-                path: `Home » ${blogData.category.name} » `,
+                path: blogData.category,
                 post: blogData,
                 quotes: {
                     items: fromTheBlogData,

@@ -1,9 +1,14 @@
 @require 'mixins/globals'
 aside
+    border-left: 1px solid border-color-footer;
+    position: relative;
+    left: -1px;
     .wrapper-list
         margin: 12px 15px 12px 30px;
 @media screen and (max-width: 991px)
     aside
-        padding: 0px;
+        padding: 0;
+        border: 0;
+        left: 0;
         .wrapper-list
             margin: 12px 0px 12px 0px;

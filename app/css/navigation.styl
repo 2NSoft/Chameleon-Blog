@@ -88,20 +88,22 @@ nav
 @media screen and (max-width: 767px)
     nav 
         height: 115px;
+        .nav-search
+            position: absolute;
+            right: 2px;
+            top: 75px;
+            border-top: 1px solid text-color-search;
+            padding: 0px;
+
+            .input-search
+                height: 32px;
+                padding-left: 12px;
+            .btn-search
+                top: 9px;
+
     .nav-brand
         top: 16px;
         left: 8px;
-    .nav-search
-        position: absolute;
-        right: 2px;
-        top: 75px;
-        border-top: 1px solid text-color-search;
-
-        .input-search
-            height: 32px;
-            padding-left: 12px;
-        .btn-search
-            top: 9px;
     .navbar-toggle
         position: absolute;
         margin: 8px 15px 0px 8px;

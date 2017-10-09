@@ -260,6 +260,24 @@ const init = (data) => {
                     return res.status(500).send(err);
                 });
         },
+        getCategories( req, res ) {
+            const id = req.query.id;
+            const pageSize = req.query.pagesize;
+            const pageNumber = req.query.pagenumber;
+            if (id) {
+                return Promise.all([
+                    data.categories.findById( id ),
+                    data.posts.filter( {
+                        'category.id': { '$eq': id } },
+                        pageSize, pageNumber ),
+                ])
+                .then( ( [categoryData, postsData] ) => {
+                    return res.status(200).send([categoryData, postsData]);
+                });
+            }
+
+            return true;
+        },
     };
 
     return controller;

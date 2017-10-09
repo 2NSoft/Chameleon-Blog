@@ -36,8 +36,6 @@ body
     text-align: right;
 .main-inner-wrapper.row
     margin-bottom: 0px;
-#app-container > .main-inner-wrapper
-    border-top: 1px solid border-color-footer;
 
 @media screen and (max-width: 991px)
     main  
@@ -62,11 +60,13 @@ h3
     border: 1px solid border-color-footer;
     border-radius: 4px;
     background-color: rgba( 255, 255, 255, 1 );
-    padding: 6px 8px;
+    padding: 4px 8px;
     text-align: center;
     font-family: "Kreon", serif;
     font-size: 0.85714em;
     color: black;
+    &.isActive
+        background-color: bg-color-button-active;
 button:focus
     outline: none;
 input:focus

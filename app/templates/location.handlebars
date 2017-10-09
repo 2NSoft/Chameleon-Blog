@@ -1,5 +1,5 @@
 <section class="row main-location">
     <p class="path-text">
-        {{path}}<strong>{{post.title}}</strong>
+        {{path.root}} » <a href="/category/{{path.id}}" data-navigo>{{path.name}}</a> {{#if post}}» <strong>{{post.title}}</strong>{{/if}}
     </p>
 </section>

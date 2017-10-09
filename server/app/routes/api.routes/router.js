@@ -66,6 +66,10 @@ const attach = (app, data) => {
         return controller.addComment( req, res );
     });
 
+    app.get( '/api/v1/categories', ( req, res ) => {
+        return controller.getCategories( req, res );
+    });
+
     app.get( '/api/v1/quotes', ( req, res ) => {
         return controller.getQuotes( req, res );
     });

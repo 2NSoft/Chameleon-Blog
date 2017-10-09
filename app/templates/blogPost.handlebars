@@ -5,7 +5,7 @@
         {{/unless}}
     </h2>
     <p class="post-info">
-        Posted by <strong>{{author.name}}</strong> on {{createdOn}} in <strong>{{category.name}}</strong>
+        Posted by <strong>{{author.name}}</strong> on {{createdOn}} in <a href="/category/{{category.id}}" data-navigo>{{category.name}}</a>
         <span role="separator">|</span> {{comments.length}} Comments
     </p>
     <div class="wrapper-post-image">

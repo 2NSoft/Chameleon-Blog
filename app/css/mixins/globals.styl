@@ -14,6 +14,7 @@ text-color-comment-date = rgb( 212, 212, 212 );
 bg-color-transparent-black = rgba( 0, 0, 0, 0.59 );
 bg-color-footer = rgb( 249, 249, 249 );
 bg-color-input-disabled = rgb( 247, 247, 247 );
+bg-color-button-active = rgb( 246, 246, 246 );
 border-color-card = rgb( 212, 212, 212 );
 border-color-footer = rgb( 234, 234, 234 );
 border-color-input = rgb( 237, 237, 237 );
@@ -53,3 +54,8 @@ gradient()
     background: linear-gradient(to bottom, rgba(247,247,247,1) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 85%, rgba(247,247,247,1) 100%);
 shadow()
     text-shadow: 1px 0px shadow-color;
+clearfix() 
+  &::after
+    display: block;
+    content: "";
+    clear: both;

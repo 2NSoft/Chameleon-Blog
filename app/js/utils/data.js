@@ -31,9 +31,21 @@ const sendComment = (commentData) => {
     return $.post('/api/v1/comments', commentData );
 };
 
+const getCategoryData = (id, pageSize, pageNumber ) => {
+    const query = `?id=${id}&pagesize=${pageSize}&pagenumber=${pageNumber}`;
+    return Promise.all([
+        $.get(`/api/v1/categories${query}`),
+        $.get('/api/v1/posts?random=3'),
+        $.get('/api/v1/lists?type=quotes'),
+        $.get('/api/v1/lists?type=posts&random=6'),
+        $.get('/api/v1/lists?type=posts'),
+    ]);
+};
+
 module.exports = {
     getHomeData,
     getBlogData,
     getFooterData,
+    getCategoryData,
     sendComment,
 };
