@@ -40,7 +40,16 @@
                         <li><a href="/home" class="isActive" data-navigo>Home</a></li>
                         <li><a href="/about" data-navigo>About</a></li>
                         <li><a href="/contact" data-navigo>Contact</a></li>
-                        <li><a href="/blog" data-navigo>Blog</a></li>
+                        <li class="private-menu">
+
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="/create/post" data-navigo>New Post</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="/create/category" data-navigo>New Category</a>
+                        </div>
+                    </li>
+
                         <li><a id="sign-in-btn" href="/sign-in" data-navigo>Sign in</a></li>
                     </ul>
                 </div>

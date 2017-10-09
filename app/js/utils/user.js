@@ -25,7 +25,7 @@ class User {
             this.onStatusChange(this);
         }
     }
-    checkStatus(change) {
+    checkStatus(change=false) {
         return $.get('/api/v1/auth')
             .then((userData) => {
                 this._setUser(userData, change);

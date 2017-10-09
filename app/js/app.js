@@ -3,12 +3,11 @@
 // Routers
 import Navigo from 'navigo';
 
-// Users and data
+// Users
 import user from 'user';
-// import * as data from 'data';
 
 // Helpers
-// import {CONSTANTS as CONSTANTS} from 'constants';
+
 // import {VALIDATOR as VALIDATOR} from 'validator';
 // import 'facebookHelper';
 
@@ -16,6 +15,8 @@ import user from 'user';
 import { get as homeController } from 'homeController';
 import { get as signinController } from 'signinController';
 import { get as blogController } from 'blogController';
+import { get as createPostController } from 'createPostController';
+import { get as createCategoryController } from 'createCategoryController';
 import { get as categoryController } from 'categoryController';
 import { get as defaultController } from 'defaultController';
 
@@ -31,11 +32,10 @@ defaultController(router)
     });
 // Setting up routes
 router
-    .on({
-        '/': () => {
+    .on( '/', () => {
             router.navigate('/home');
-        },
-        '/home': () => {
+        })
+    .on( '/home', () => {
             return homeController(router)
                 .then(()=>{
                     router.updatePageLinks();
@@ -43,31 +43,76 @@ router
                 .catch((err) => {
                     toastr.error(err);
                 });
-        },
-        '/blog/:id': (params) => {
+        })
+    .on( '/blog/:id', (params) => {
             blogController(params, router)
                 .then(()=>{
                     router.updatePageLinks();
+                })
+                .catch((err) => {
+                    toastr.error(err);
                 });
-        },
-        '/category/:id': (params, query) => {
+        })
+    .on( '/category/:id', (params, query) => {
             categoryController(params, query, router)
                 .then(()=>{
                     router.updatePageLinks();
+                })
+                .catch((err) => {
+                    toastr.error(err);
                 });
-        },
-        '/sign-in': () => {
+        })
+    .on( '/create/post', () => {
+            createPostController(router)
+                .then(()=>{
+                    router.updatePageLinks();
+                })
+                .catch((err) => {
+                    toastr.error(err);
+                });
+        }, {
+            before: (done) => {
+                user.checkStatus()
+                    .then( (userData) => {
+                        if (!userData.signedIn) {
+                            router.navigate('/unauthorized');
+                            done(false);
+                        }
+                        done();
+                    });
+            },
+        })
+        .on( '/create/category', () => {
+            createCategoryController(router)
+                .then(()=>{
+                    router.updatePageLinks();
+                })
+                .catch((err) => {
+                    toastr.error(err);
+                });
+        }, {
+            before: (done) => {
+                user.checkStatus()
+                    .then( (userData) => {
+                        if (!userData.signedIn) {
+                            router.navigate('/unauthorized');
+                            done(false);
+                        }
+                        done();
+                    });
+            },
+        })
+    .on( '/sign-in', () => {
             return signinController()
                 .catch((err) => {
                     toastr.error(err);
                 });
-        },
-        '/about': () => {
+        })
+    .on( '/about', () => {
             console.log( 'about');
-        },
-        '/400': () => {
-        },
-    })
+        })
+    .on( '/400', () => {
+        })
     .notFound( function() {
         console.log( 'Not found' );
     })
@@ -77,6 +122,10 @@ let initial = true;
 user.onStatusChange = (usr) => {
     const signInBtn = $('#sign-in-btn');
     if (usr.signedIn) {
+        $('.private-menu')
+            .each((index, menu) => {
+                $(menu).show();
+            });
         signInBtn.text('Sign out');
         signInBtn.attr('href', '/home');
         if (!initial) {
@@ -85,6 +134,10 @@ user.onStatusChange = (usr) => {
             initial = false;
         }
     } else {
+        $('.private-menu')
+        .each((index, menu) => {
+            $(menu).hide();
+        });
         signInBtn.text('Sign in');
         signInBtn.attr('href', '/sign-in');
     }

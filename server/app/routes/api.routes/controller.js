@@ -1,3 +1,21 @@
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public/uploads/posts');
+    },
+    filename: (req, file, cb) => {
+        const fName = req.postId + '.jpeg';
+        cb(null, '' + fName);
+    },
+});
+
+const limits = {
+    fieldNameSize: 100,
+    fileSize: 5 * 1024 * 1024,
+};
+
+const upload = multer( { storage, limits } ).single( 'postPic' );
 const init = (data) => {
     const controller = {
         addUser(req, res) {
@@ -276,7 +294,59 @@ const init = (data) => {
                 });
             }
 
-            return true;
+            return data.categories
+                .getAll()
+                .then((categories) => {
+                    return res.status(200).send(categories);
+                } );
+        },
+        addPost( req, res ) {
+            if ( !req.user ) {
+                const message = 'You need to be logged to reach the page!';
+                return res.status(404).send(message);
+            }
+            return data.posts.create({})
+                .then( (post) => {
+                    req.postId = post._id;
+                    upload( req, res, (err) => {
+                        if (err) {
+                            let message;
+                            switch ( err.code ) {
+                                case 'LIMIT_FILE_SIZE':
+                                {
+                                    message = 'File too large! Max size is 1MB.'; // eslint-disable-line max-len
+                                    break;
+                                }
+                                default:
+                                {
+                                    message = err.code;
+                                }
+                            }
+                            return res.status(500).send(err);
+                        }
+                        post.title = req.body.title;
+                        post.subtitle = req.body.subtitle;
+                        post.text = req.body.text;
+                        post.quotes = [req.body.quote];
+                        post.comments = [];
+                        post.author = {
+                            name: req.body.username,
+                            id: req.body.userId,
+                        };
+                        post.category = {
+                            name: req.body.categoryName,
+                            id: req.body.category,
+                        };
+                        post.createdOn = req.body.createdOn;
+                        return data.posts.updateById( post )
+                            .then( (dbPost) => {
+                                return res.status(200).send(dbPost._id);
+                            });
+                    });
+                })
+                .catch( ( err ) => {
+                    return res.status(500).send(err);
+                });
         },
     };
 

@@ -10,7 +10,6 @@ import { registerComment } from 'commentHelper';
 import { registerBlogpost } from 'blogPostHelper';
 
 const $appContainer = $('#app-container');
-const $menu = $('.navbar-collapse ul');
 
 export function get(params, router) {
     let postId;
@@ -82,16 +81,7 @@ export function get(params, router) {
         })
         .then((blogTemplate) => {
             $appContainer.html(blogTemplate);
-            $menu
-                .children()
-                .each( (index, item) => {
-                    const link = $($(item).find('a').eq(0));
-                    if (link.text()==='Blog') {
-                        link.addClass('isActive');
-                    } else {
-                        link.removeClass('isActive');
-                    }
-                });
+
                 $('#signin-btn').click( () => {
                     router.navigate('/sign-in');
                 });
@@ -110,7 +100,6 @@ export function get(params, router) {
                     }
                     return data.sendComment( commentData )
                         .then(()=>{
-                            console.log('done');
                             window.location.reload();
                         })
                         .catch( (err) => {

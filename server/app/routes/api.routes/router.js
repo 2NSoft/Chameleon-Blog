@@ -62,6 +62,10 @@ const attach = (app, data) => {
         return controller.getPosts( req, res );
     });
 
+    app.post('/api/v1/posts', (req, res) => {
+        return controller.addPost(req, res);
+    });
+
     app.post( '/api/v1/comments', ( req, res ) => {
         return controller.addComment( req, res );
     });

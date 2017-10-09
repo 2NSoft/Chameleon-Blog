@@ -26,6 +26,9 @@ System.config({
         'homeController': 'js/controllers/homeController.js',
         'signinController': 'js/controllers/signinController.js',
         'blogController': 'js/controllers/blogController.js',
+        'createPostController': 'js/controllers/createPostController.js',
+        'createCategoryController':
+            'js/controllers/createCategoryController.js',
         'categoryController': 'js/controllers/categoryController.js',
         'defaultController': 'js/controllers/defaultController.js',
 

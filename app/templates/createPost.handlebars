@@ -1,0 +1,37 @@
+<div class="container-fluid main-inner-wrapper">
+    <main>
+        <form id="post-form" name="post-form" enctype='multipart/form-data' action="/api/v1/posts" method="post">
+            <h2>New Post</h2>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <input name="username" value="Author: {{user.username}}" disabled>
+                </div>
+                <div class="form-group col-sm-6">
+                    <select name="category" required>
+                        {{#each categories}}
+                            <option value="{{this._id}}" {{#if @first}}selected{{/if}}>{{this.name}}</option>
+                        {{/each}}
+                    </select>
+
+                </div>
+            </div>
+          
+            <div class="form-group">
+                <input type="file" name='postPic' accept="image/jpeg, image/jpg" placeholter="Post media" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="title" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="subtitle" placeholder="Subtitle" required>
+            </div>
+            <div class="form-group">
+                <textarea form="post-form" name="text" placeholder="Post text" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="text" name="quote" placeholder="Quote" required>
+            </div>
+            <button class="chameleon-btn" role="submit">Create</button>
+        </form>
+    </main>
+</div>

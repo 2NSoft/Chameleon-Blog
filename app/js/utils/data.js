@@ -42,10 +42,27 @@ const getCategoryData = (id, pageSize, pageNumber ) => {
     ]);
 };
 
+const addPost= (formData) => {
+    return $.ajax({
+        url: '/api/v1/posts',
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+    });
+};
+
+const getCategories = () => {
+    return $.get('/api/v1/categories');
+};
+
 module.exports = {
     getHomeData,
     getBlogData,
     getFooterData,
     getCategoryData,
+    getCategories,
+    addPost,
     sendComment,
 };
