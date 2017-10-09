@@ -1,0 +1,48 @@
+@require 'mixins/globals';
+
+form  
+    margin: 65px 0px;
+    width: 100%;
+    position: relative;
+    h2  
+        margin-bottom: 20px;
+    .form-group
+        margin: 12px 0px;
+        bodyText();
+        input 
+            height: 40px;
+            width: 100%;
+            gradient();
+            border: 1px solid border-color-input;
+            padding: 16px;
+            padding-left: 20px;
+            &[disabled]
+                background: 0;
+                background: bg-color-input-disabled;
+                shadow();
+            &:focus
+                background: white; 
+            &::placeholder
+                shadow();
+        textarea
+            padding: 16px;
+            padding-left: 20px;
+            width: 100%;
+            height: 170px;
+            resize: none;
+            border: 1px solid border-color-input;
+            gradient()
+            &[disabled]
+                background: 0;
+                background: bg-color-input-disabled;
+            &:focus
+                background: white;
+            &::placeholder
+                shadow();
+    button[role="submit"]
+        float: right;
+        shadow();
+@media screen and (max-width: 767px)
+    form 
+        padding-left: 20px;
+        padding-right: 20px;  

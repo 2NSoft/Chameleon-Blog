@@ -5,7 +5,7 @@ a
 .row
     margin-bottom: 30px;
 .shadowed-text 
-    text-shadow: 1px 1px shadow-color
+    shadow();
 
 .content-container
     max-width: 974px;
@@ -26,12 +26,24 @@ body
         content: '\201c';
     &::after 
         content: '\201d';
-
+.half-width
+    width: 50%;
+.gradiented
+    gradient();
 .right-aligned
     text-align: right;
 .main-inner-wrapper.row
     margin-bottom: 0px;
+#app-container > .main-inner-wrapper
+    border-top: 1px solid border-color-footer;
 
+@media screen and (max-width: 991px)
+    main  
+        border-bottom: 1px solid border-color-footer;
+    .main-bordered
+        border-right: 0 !important;
+.main-bordered
+    border-right: 1px solid border-color-footer;
 h2  
     font-family: "Kreon", serif;
     font-weight: 300;
@@ -55,3 +67,7 @@ h3
     color: black;
 button:focus
     outline: none;
+input:focus
+    outline: border-color-outline solid 1px;
+textarea:focus
+    outline: border-color-outline solid 1px;

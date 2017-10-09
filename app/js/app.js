@@ -38,7 +38,7 @@ router
                 });
         },
         '/blog/:id': (params) => {
-            blogController(params);
+            blogController(params, router);
         },
         '/sign-in': () => {
             return signinController()
@@ -57,19 +57,24 @@ router
     })
     .resolve();
 
+let initial = true;
 user.onStatusChange = (usr) => {
     const signInBtn = $('#sign-in-btn');
     if (usr.signedIn) {
         signInBtn.text('Sign out');
         signInBtn.attr('href', '/home');
-        router.navigate('/home');
+        if (!initial) {
+            router.navigate('/home');
+        } else {
+            initial = false;
+        }
     } else {
         signInBtn.text('Sign in');
         signInBtn.attr('href', '/sign-in');
     }
 };
 
-user.checkStatus();
+user.checkStatus(true);
 
 $('#sign-in-btn').click( (ev) => {
     if ($('#sign-in-btn').text() === 'Sign out') {

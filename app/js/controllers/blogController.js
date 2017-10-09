@@ -10,9 +10,9 @@ import { registerComment } from 'commentHelper';
 import { registerBlogpost } from 'blogPostHelper';
 
 const $appContainer = $('#app-container');
-const menu = $('.navbar-collapse ul');
+const $menu = $('.navbar-collapse ul');
 
-export function get(params) {
+export function get(params, router) {
     return Promise.all([
             registerQuote(),
             registerLocation(),
@@ -22,7 +22,7 @@ export function get(params) {
         .then(() => {
             return Promise.all([
                 data.getBlogData(params.id),
-                user.checkStatus(),
+                user.checkStatus(false),
             ]);
         })
         .then(([
@@ -72,11 +72,12 @@ export function get(params) {
                     type: 'Recent Posts',
                     vertical: true,
                 },
+                user: userData,
             });
         })
         .then((blogTemplate) => {
             $appContainer.html(blogTemplate);
-            menu
+            $menu
                 .children()
                 .each( (index, item) => {
                     const link = $($(item).find('a').eq(0));
@@ -85,6 +86,9 @@ export function get(params) {
                     } else {
                         link.removeClass('isActive');
                     }
+                });
+                $('#signin-btn').click( () => {
+                    router.navigate('/sign-in');
                 });
         });
 }
