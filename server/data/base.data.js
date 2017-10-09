@@ -44,6 +44,7 @@ class BaseData {
         pageNumber = pageNumber || 1;
 
         return this.collection.find( filter )
+            .sort({ $natural: -1 })
             .skip( (pageNumber - 1) * pageSize )
             .limit( pageSize )
             .toArray()

@@ -15,15 +15,15 @@
         <form id="comment-form">
             <h2>Leave a Reply</h2>
             <div class="form-group half-width">
-                <input name="name" id="comment-name" value="User {{user.username}}" disabled>
+                <input name="name" id="comment-name" value="User: {{user.username}}" disabled>
             </div>
             <div class="form-group half-width">
-                <input name="email" id="comment-email" value="E-mail {{user.email}}" disabled>
+                <input name="email" id="comment-email" value="E-mail: {{user.email}}" disabled>
             </div>
             <div class="form-group">
                 <textarea form="comment-form" name="message" id="comment-message" placeholder="Message" required></textarea>
             </div>
-            <button class="chameleon-btn" role="submit">Send comment</button>
+            <button class="chameleon-btn" role="submit" id="comment-send-btn">Send comment</button>
         </form>
         {{else}}
         <form>

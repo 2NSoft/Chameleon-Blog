@@ -27,8 +27,13 @@ const getBlogData = (id) => {
     ]);
 };
 
+const sendComment = (commentData) => {
+    return $.post('/api/v1/comments', commentData );
+};
+
 module.exports = {
     getHomeData,
     getBlogData,
     getFooterData,
+    sendComment,
 };

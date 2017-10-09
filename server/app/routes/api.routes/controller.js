@@ -227,6 +227,39 @@ const init = (data) => {
                     return res.status(400).send(err);
                 });
         },
+        addComment( req, res ) {
+            const comment = {
+                text: req.body.comment,
+                createdOn: req.body.time,
+                postId: req.body.postId,
+                author: {
+                    name: req.body.user.username,
+                    id: req.body.user.id,
+                    profilePic: req.body.user.profilePic,
+                },
+            };
+            return data.comments
+                .create(comment)
+                .then( (dbComment)=> {
+                    return Promise.all( [
+                        data.posts.findById(dbComment.postId),
+                        dbComment,
+                    ]);
+                })
+                .then( ([dbPost, dbComment]) => {
+                    dbComment.id = dbComment._id;
+                    delete( dbComment._id );
+                    dbPost.comments = dbPost.comments || [];
+                    dbPost.comments.push( dbComment );
+                    return data.posts.updateById( dbPost );
+                })
+                .then( () => {
+                    return res.status(200).send();
+                } )
+                .catch((err) => {
+                    return res.status(500).send(err);
+                });
+        },
     };
 
     return controller;

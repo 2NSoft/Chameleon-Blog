@@ -24,7 +24,10 @@ const useHash = true;
 const hash = '#';
 const router = new Navigo(root, useHash, hash);
 
-defaultController(router);
+defaultController(router)
+    .then(()=>{
+        router.updatePageLinks();
+    });
 // Setting up routes
 router
     .on({
@@ -33,12 +36,18 @@ router
         },
         '/home': () => {
             return homeController(router)
+                .then(()=>{
+                    router.updatePageLinks();
+                })
                 .catch((err) => {
                     toastr.error(err);
                 });
         },
         '/blog/:id': (params) => {
-            blogController(params, router);
+            blogController(params, router)
+                .then(()=>{
+                    router.updatePageLinks();
+                });
         },
         '/sign-in': () => {
             return signinController()

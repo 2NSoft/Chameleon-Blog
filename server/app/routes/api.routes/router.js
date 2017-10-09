@@ -9,6 +9,7 @@ const attach = (app, data) => {
                 id: req.user.id,
                 username: req.user.username,
                 email: req.user.email,
+                stringProfilePicture: req.user.stringProfilePicture,
             } );
         }
         return res.status( 401 ).send( 'Not logged in!' );
@@ -30,6 +31,7 @@ const attach = (app, data) => {
                     id: req.user.id,
                     username: req.user.username,
                     email: req.user.email,
+                    stringProfilePicture: req.user.stringProfilePicture,
                 } );
             } );
             return true;
@@ -58,6 +60,10 @@ const attach = (app, data) => {
 
     app.get( '/api/v1/posts', ( req, res ) => {
         return controller.getPosts( req, res );
+    });
+
+    app.post( '/api/v1/comments', ( req, res ) => {
+        return controller.addComment( req, res );
     });
 
     app.get( '/api/v1/quotes', ( req, res ) => {

@@ -1,4 +1,4 @@
-/* globals $ */
+/* globals $ toastr */
 
 import { load as loadTemplate } from 'templates';
 import user from 'user';
@@ -13,6 +13,8 @@ const $appContainer = $('#app-container');
 const $menu = $('.navbar-collapse ul');
 
 export function get(params, router) {
+    let postId;
+    let userData;
     return Promise.all([
             registerQuote(),
             registerLocation(),
@@ -32,8 +34,10 @@ export function get(params, router) {
                 archivesData,
                 recentPostsData,
             ],
-            userData,
+            _userData,
         ]) => {
+            postId = blogData._id;
+            userData = _userData;
             let date = new Date(blogData.createdOn);
             date = dateFormat(date, 'mmm dd, yyyy');
             blogData.createdOn = date;
@@ -89,6 +93,29 @@ export function get(params, router) {
                 });
                 $('#signin-btn').click( () => {
                     router.navigate('/sign-in');
+                });
+                $('#comment-send-btn').click( (ev) => {
+                    ev.preventDefault();
+                    const commentData = {
+                        comment: $('#comment-message').val(),
+                        time: new Date(),
+                        user: userData,
+                        postId: postId,
+                    };
+                    if (!commentData.comment &&
+                            commentData.comment.length < 10) {
+                        toastr.error('Comment message should be at least 10 symbols!'); // eslint-disable-line max-len
+                        return false;
+                    }
+                    return data.sendComment( commentData )
+                        .then(()=>{
+                            console.log('done');
+                            window.location.reload();
+                        })
+                        .catch( (err) => {
+                            toastr.error( err.message,
+                                'Could not send comment!');
+                        });
                 });
         });
 }
