@@ -148,11 +148,23 @@ gulp.task( 'copy:uploads', ['clear:uploads'], () => {
         .pipe( gulp.dest('./public/uploads') );
 });
 
+gulp.task( 'copy:uploads_prod', () => {
+    return gulp.src( ['./app/uploads/users/user.png', './app/uploads/users/nikolay.jpeg'] )
+        .pipe( gulp.dest('./public/uploads') );
+});
+
 gulp.task( 'copy', [
     'copy:fonts',
     'copy:images',
     'copy:templates',
     'copy:uploads',
+]);
+
+gulp.task( 'copy_prod', [
+    'copy:fonts',
+    'copy:images',
+    'copy:templates',
+    'copy:uploads_prod',
 ]);
 
 const gulpsync = require('gulp-sync')(gulp);
@@ -165,7 +177,9 @@ gulp.task('compile',
         'compile:css',
     ]));
 
-gulp.task( 'build', ['copy', 'compile'], () => {
+gulp.task( 'build_dev', ['copy', 'compile'], () => {
     const beep = '\007';
     console.log( beep ); //beep
 } );
+
+gulp.task( 'build', ['copy_prod', 'compile'] );
