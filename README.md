@@ -29,6 +29,7 @@ The goal of the project is to build a blog SAP, based on the Chameleon design
     - GET?random returns N random quotes
   ### /api/v1/lists
     -GET returns various list based on
-      ?type= returns the 6 most recent items of the following types: quotes, posts (post titles), comments or the most recent post text
+      ?type= returns the 6 most recent items of the following types: quotes, posts, comments, text;
+        where posts returns post titles and text returns only one post text
       ?type='type'&random=N returns N random items of that type
   
