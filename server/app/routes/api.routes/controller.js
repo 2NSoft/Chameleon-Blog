@@ -278,6 +278,34 @@ const init = (data) => {
                     return res.status(500).send(err);
                 });
         },
+        getUsers( req, res ) {
+            const id = req.query.id;
+            const pageSize = req.query.pagesize;
+            const pageNumber = req.query.pagenumber;
+            if (id) {
+                return Promise.all([
+                    data.users.findById( id ),
+                    data.posts.filter( {
+                        'author.id': { '$eq': id } },
+                        pageSize, pageNumber ),
+                ])
+                .then( ( [userData, postsData] ) => {
+                    const publicInfo = {
+                        username: userData.username,
+                        profilePic: userData.stringProfilePicture,
+                        postCount: userData.postCount,
+                    };
+                    return res.status(200).send([publicInfo, postsData]);
+                });
+            }
+
+            return data.users
+                .getAll()
+                .then((users) => {
+                    users = users.map((usr) => usr.username );
+                    return res.status(200).send(users);
+                } );
+        },
         getCategories( req, res ) {
             const id = req.query.id;
             const pageSize = req.query.pagesize;
@@ -338,13 +366,41 @@ const init = (data) => {
                             id: req.body.category,
                         };
                         post.createdOn = req.body.createdOn;
-                        return data.posts.updateById( post )
-                            .then( (dbPost) => {
-                                return res.status(200).send(dbPost._id);
+                        return Promise.all([
+                                data.posts.updateById( post ),
+                                data.categories.findById( post.category.id ),
+                                data.users.findById( post.author.id ),
+                            ])
+                            .then( ([dbPost, dbCategory, dbUser]) => {
+                                dbCategory.postCount =
+                                    dbCategory.postCount || 0;
+                                dbCategory.postCount += 1;
+                                dbUser.postCount =
+                                    dbUser.postCount || 0;
+                                dbUser.postCount += 1;
+                                return Promise.all( [
+                                    dbPost._id,
+                                    data.categories.updateById( dbCategory ),
+                                    data.users.updateById( dbUser ),
+                                ]);
+                            })
+                            .then( ( [postId] )=> {
+                                return res.status(200).send(postId);
                             });
                     });
                 })
                 .catch( ( err ) => {
+                    return res.status(500).send(err);
+                });
+        },
+        addCategory( req, res ) {
+            const category = req.body.category;
+            category.postCount = 0;
+            return data.categories.create( category )
+                .then( (dbCategory) => {
+                    return res.status(200).send(dbCategory._id);
+                })
+                .catch((err) => {
                     return res.status(500).send(err);
                 });
         },

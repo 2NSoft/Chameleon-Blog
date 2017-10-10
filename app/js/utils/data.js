@@ -27,7 +27,7 @@ const getBlogData = (id) => {
     ]);
 };
 
-const sendComment = (commentData) => {
+const addComment = (commentData) => {
     return $.post('/api/v1/comments', commentData );
 };
 
@@ -35,6 +35,17 @@ const getCategoryData = (id, pageSize, pageNumber ) => {
     const query = `?id=${id}&pagesize=${pageSize}&pagenumber=${pageNumber}`;
     return Promise.all([
         $.get(`/api/v1/categories${query}`),
+        $.get('/api/v1/posts?random=3'),
+        $.get('/api/v1/lists?type=quotes'),
+        $.get('/api/v1/lists?type=posts&random=6'),
+        $.get('/api/v1/lists?type=posts'),
+    ]);
+};
+
+const getUserData = (id, pageSize, pageNumber ) => {
+    const query = `?id=${id}&pagesize=${pageSize}&pagenumber=${pageNumber}`;
+    return Promise.all([
+        $.get(`/api/v1/users${query}`),
         $.get('/api/v1/posts?random=3'),
         $.get('/api/v1/lists?type=quotes'),
         $.get('/api/v1/lists?type=posts&random=6'),
@@ -53,6 +64,10 @@ const addPost= (formData) => {
     });
 };
 
+const addCategory= (category) => {
+    return $.post('/api/v1/categories', { category });
+};
+
 const getCategories = () => {
     return $.get('/api/v1/categories');
 };
@@ -62,7 +77,9 @@ module.exports = {
     getBlogData,
     getFooterData,
     getCategoryData,
+    getUserData,
     getCategories,
     addPost,
-    sendComment,
+    addCategory,
+    addComment,
 };

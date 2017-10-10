@@ -47,6 +47,10 @@ const attach = (app, data) => {
         return res.status( 200 ).send( 'Successfully logged out!' );
     } );
 
+    app.get( '/api/v1/users', ( req, res ) => {
+        return controller.getUsers( req, res );
+    } );
+
     app.post( '/api/v1/users', ( req, res ) => {
         return controller.addUser( req, res );
     } );
@@ -72,6 +76,10 @@ const attach = (app, data) => {
 
     app.get( '/api/v1/categories', ( req, res ) => {
         return controller.getCategories( req, res );
+    });
+
+    app.post( '/api/v1/categories', ( req, res ) => {
+        return controller.addCategory( req, res );
     });
 
     app.get( '/api/v1/quotes', ( req, res ) => {

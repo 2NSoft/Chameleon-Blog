@@ -25,11 +25,13 @@ System.config({
         // Controllers
         'homeController': 'js/controllers/homeController.js',
         'signinController': 'js/controllers/signinController.js',
+        'registerController': 'js/controllers/registerController.js',
         'blogController': 'js/controllers/blogController.js',
         'createPostController': 'js/controllers/createPostController.js',
         'createCategoryController':
             'js/controllers/createCategoryController.js',
         'categoryController': 'js/controllers/categoryController.js',
+        'userController': 'js/controllers/userController.js',
         'defaultController': 'js/controllers/defaultController.js',
 
         // Library files

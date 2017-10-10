@@ -36,7 +36,8 @@ export function get(router) {
                 formData.append( 'username', userData.username );
                 formData.append( 'userId', userData.id );
                 formData.append( 'createdOn', new Date() );
-                formData.append( 'categoryName', $('[name=category]').text() );
+                formData.append( 'categoryName',
+                    $('[name=category] > [selected]').text() );
                 return data.addPost( formData )
                     .then((postId) => {
                         router.navigate(`/blog/${postId}`);

@@ -12,10 +12,29 @@ export function get(router) {
     return user.checkStatus()
         .then( (_userData) => {
             userData = _userData;
+            if (!userData.signedIn) {
+                return user.checkStatus(true);
+            }
             return loadTemplate('createCategory');
         })
         .then((createCatTemplate) => {
             $appContainer.html(createCatTemplate);
+            const $form = $('#category-form');
+
+            $form.submit( (ev)=> {
+                ev.preventDefault();
+                const formData = {
+                    name: $('[name=name]').val(),
+                    description: $('[name=description]').val(),
+                };
+                return data.addCategory( formData )
+                    .then((categoryId) => {
+                        router.navigate(`/category/${categoryId}`);
+                    })
+                    .catch((err) => {
+                        toastr.error( err, 'Something went wrong!');
+                    });
+            });
 
             $menu
                 .children()

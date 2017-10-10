@@ -13,11 +13,13 @@ import user from 'user';
 
 // Controllers
 import { get as homeController } from 'homeController';
-import { get as signinController } from 'signinController';
 import { get as blogController } from 'blogController';
 import { get as createPostController } from 'createPostController';
 import { get as createCategoryController } from 'createCategoryController';
 import { get as categoryController } from 'categoryController';
+import { get as userController } from 'userController';
+import { get as registerController } from 'registerController';
+import { get as signinController } from 'signinController';
 import { get as defaultController } from 'defaultController';
 
 // Navigo setup
@@ -55,6 +57,15 @@ router
         })
     .on( '/category/:id', (params, query) => {
             categoryController(params, query, router)
+                .then(()=>{
+                    router.updatePageLinks();
+                })
+                .catch((err) => {
+                    toastr.error(err);
+                });
+        })
+    .on( '/user/:id', (params, query) => {
+            userController(params, query, router)
                 .then(()=>{
                     router.updatePageLinks();
                 })
@@ -103,7 +114,13 @@ router
             },
         })
     .on( '/sign-in', () => {
-            return signinController()
+            return signinController(router)
+                .catch((err) => {
+                    toastr.error(err);
+                });
+        })
+    .on( '/register', () => {
+            return registerController()
                 .catch((err) => {
                     toastr.error(err);
                 });

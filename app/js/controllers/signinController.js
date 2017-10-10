@@ -5,7 +5,7 @@ import user from 'user';
 
 const $appContainer = $('#app-container');
 
-export function get(params) {
+export function get(router) {
     return loadTemplate( 'signin' )
         .then( ( signinTemplate ) => {
             $appContainer.html(signinTemplate);
@@ -15,6 +15,9 @@ export function get(params) {
                     username: $('#sign-in-username').val(),
                     password: $('#sign-in-password').val(),
                 });
+            });
+            $('#sign-in-register').click( () => {
+                router.navigate('/register');
             });
         });
 }

@@ -98,7 +98,7 @@ export function get(params, router) {
                         toastr.error('Comment message should be at least 10 symbols!'); // eslint-disable-line max-len
                         return false;
                     }
-                    return data.sendComment( commentData )
+                    return data.addComment( commentData )
                         .then(()=>{
                             window.location.reload();
                         })

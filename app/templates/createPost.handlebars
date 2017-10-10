@@ -1,6 +1,6 @@
 <div class="container-fluid main-inner-wrapper">
     <main>
-        <form id="post-form" name="post-form" enctype='multipart/form-data' action="/api/v1/posts" method="post">
+        <form id="post-form" name="post-form" enctype='multipart/form-data'>
             <h2>New Post</h2>
             <div class="row">
                 <div class="form-group col-sm-6">
@@ -20,16 +20,16 @@
                 <input type="file" name='postPic' accept="image/jpeg, image/jpg" placeholter="Post media" required>
             </div>
             <div class="form-group">
-                <input type="text" name="title" placeholder="Title" required>
+                <input type="text" name="title" placeholder="Title" autocomplete="off" required>
             </div>
             <div class="form-group">
-                <input type="text" name="subtitle" placeholder="Subtitle" required>
+                <input type="text" name="subtitle" placeholder="Subtitle" autocomplete="off" required>
             </div>
             <div class="form-group">
                 <textarea form="post-form" name="text" placeholder="Post text" required></textarea>
             </div>
             <div class="form-group">
-                <input type="text" name="quote" placeholder="Quote" required>
+                <input type="text" name="quote" placeholder="Quote" autocomplete="off" required>
             </div>
             <button class="chameleon-btn" role="submit">Create</button>
         </form>

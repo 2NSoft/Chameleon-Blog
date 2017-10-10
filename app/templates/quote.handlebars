@@ -1,4 +1,9 @@
 <article class="col-12 wrapper-quote {{#if quote.gradiented}}bordered-quote gradiented{{/if}}" data-quote={{quote.postId}}>
+    {{#if quote.profilePic}}
+        <div class="wrapper-quote-image">
+            <img src="../uploads/users/{{quote.profilePic}}" alt="{{quote.title}}'s photo'">
+        </div>
+    {{/if}}
     <h2 {{#if quote.quoted}}class="quoted"{{/if}}>{{quote.title}}</h2>
     <p {{#if quote.quoted}}class="right-aligned"{{/if}}>{{quote.subtitle}}</p>
 </article>
