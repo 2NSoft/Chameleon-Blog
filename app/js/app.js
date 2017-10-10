@@ -9,7 +9,7 @@ import user from 'user';
 // Helpers
 
 // import {VALIDATOR as VALIDATOR} from 'validator';
-// import 'facebookHelper';
+import 'facebookHelper';
 
 // Controllers
 import { get as homeController } from 'homeController';

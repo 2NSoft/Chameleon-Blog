@@ -30,7 +30,7 @@
                         </p>
                     </a>
                 </div>
-
+                <div class="wrapper-sharebtns"><button class="item-btn-share chameleon-btn" onclick="shareToFacebook()"></button></div>
                 <form class="nav-search">
                         <input type="text" class="input-search" placeholder="Search this website">
                         <button type="submit" class="btn-search"><span class="glyphicon glyphicon-search"></span></button>
@@ -73,6 +73,17 @@
     <!-- Systemjs js setup-->
     <script src="./libs/systemjs/dist/system.js"></script>
     <script src="js/configs/system-config.js"></script>
+
+    <!-- Facebook -->
+    <script>
+        function shareToFacebook() {
+        FB.ui( {
+                method: "share",
+                href: window.location.href, 
+            },
+            function(response){});
+        }
+    </script>
 </body>
 
 </html>

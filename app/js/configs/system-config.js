@@ -13,7 +13,7 @@ System.config({
         'setLink': 'js/utils/setLink.js',
         'data': 'js/utils/data.js',
         'user': 'js/utils/user.js',
-        'constants': 'js/helpers/constants.js',
+        'facebookHelper': 'js/helpers/facebook.helper.js',
         'validator': 'js/helpers/validator.js',
         'carouselHelper': 'js/helpers/carousel.helper.js',
         'quoteHelper': 'js/helpers/quote.helper.js',
