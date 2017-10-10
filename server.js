@@ -7,7 +7,7 @@ let config = null;
 async()
     .then( () => {
         return require( './server/config/app.config.js' )
-            .init( '127.0.0.1', 80 );
+            .init( '18.221.191.83', 80 );
     } )
     .then( ( _config ) => {
         config = _config;

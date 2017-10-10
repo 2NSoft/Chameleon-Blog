@@ -150,7 +150,7 @@ gulp.task( 'copy:uploads', ['clear:uploads'], () => {
 
 gulp.task( 'copy:uploads_prod', () => {
     return gulp.src( ['./app/uploads/users/user.png', './app/uploads/users/nikolay.jpeg'] )
-        .pipe( gulp.dest('./public/uploads') );
+        .pipe( gulp.dest('./public/uploads/users') );
 });
 
 gulp.task( 'copy', [
