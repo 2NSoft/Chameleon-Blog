@@ -61,7 +61,7 @@ export function get(params, query, router) {
                     index: i,
                 });
             }
-            return loadTemplate('category', {
+            return loadTemplate('user', {
                 quote: {
                     title: userData.username,
                     subtitle: `${userData.postCount} Posts`,
