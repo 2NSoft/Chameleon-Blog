@@ -24,6 +24,7 @@ const init = (data) => {
                 email: req.body.email,
                 password: req.body.password,
                 stringProfilePicture: 'user.png',
+                postCount: 0,
             };
 
             if (!data.users.validator.isValid(model)) {

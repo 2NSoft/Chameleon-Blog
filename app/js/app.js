@@ -13,6 +13,7 @@ import user from 'user';
 
 // Controllers
 import { get as homeController } from 'homeController';
+import { get as aboutController } from 'aboutController';
 import { get as blogController } from 'blogController';
 import { get as createPostController } from 'createPostController';
 import { get as createCategoryController } from 'createCategoryController';
@@ -21,6 +22,8 @@ import { get as userController } from 'userController';
 import { get as registerController } from 'registerController';
 import { get as signinController } from 'signinController';
 import { get as defaultController } from 'defaultController';
+import { get as notFoundController } from 'notFoundController';
+import { get as unauthorizedController } from 'unauthorizedController';
 
 // Navigo setup
 const root = null;
@@ -29,109 +32,98 @@ const hash = '#';
 const router = new Navigo(root, useHash, hash);
 
 defaultController(router)
-    .then(()=>{
+    .then(() => {
         router.updatePageLinks();
     });
+
 // Setting up routes
 router
-    .on( '/', () => {
-            router.navigate('/home');
-        })
-    .on( '/home', () => {
-            return homeController(router)
-                .then(()=>{
-                    router.updatePageLinks();
-                })
-                .catch((err) => {
-                    toastr.error(err);
-                });
-        })
-    .on( '/blog/:id', (params) => {
-            blogController(params, router)
-                .then(()=>{
-                    router.updatePageLinks();
-                })
-                .catch((err) => {
-                    toastr.error(err);
-                });
-        })
-    .on( '/category/:id', (params, query) => {
-            categoryController(params, query, router)
-                .then(()=>{
-                    router.updatePageLinks();
-                })
-                .catch((err) => {
-                    toastr.error(err);
-                });
-        })
-    .on( '/user/:id', (params, query) => {
-            userController(params, query, router)
-                .then(()=>{
-                    router.updatePageLinks();
-                })
-                .catch((err) => {
-                    toastr.error(err);
-                });
-        })
-    .on( '/create/post', () => {
-            createPostController(router)
-                .then(()=>{
-                    router.updatePageLinks();
-                })
-                .catch((err) => {
-                    toastr.error(err);
-                });
-        }, {
-            before: (done) => {
-                user.checkStatus()
-                    .then( (userData) => {
-                        if (!userData.signedIn) {
-                            router.navigate('/unauthorized');
-                            done(false);
-                        }
-                        done();
-                    });
-            },
-        })
-        .on( '/create/category', () => {
-            createCategoryController(router)
-                .then(()=>{
-                    router.updatePageLinks();
-                })
-                .catch((err) => {
-                    toastr.error(err);
-                });
-        }, {
-            before: (done) => {
-                user.checkStatus()
-                    .then( (userData) => {
-                        if (!userData.signedIn) {
-                            router.navigate('/unauthorized');
-                            done(false);
-                        }
-                        done();
-                    });
-            },
-        })
-    .on( '/sign-in', () => {
-            return signinController(router)
-                .catch((err) => {
-                    toastr.error(err);
-                });
-        })
-    .on( '/register', () => {
-            return registerController()
-                .catch((err) => {
-                    toastr.error(err);
-                });
-        })
-    .on( '/about', () => {
-            console.log( 'about');
-        })
-    .on( '/400', () => {
-        })
-    .notFound( function() {
-        console.log( 'Not found' );
+    .on('/', () => {
+        router.navigate('/home');
+    })
+    .on('/home', () => {
+        return homeController(router)
+            .then(() => {
+                router.updatePageLinks();
+            })
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .on('/blog/:id', (params) => {
+        blogController(params, router)
+            .then(() => {
+                router.updatePageLinks();
+            })
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .on('/category/:id', (params, query) => {
+        categoryController(params, query, router)
+            .then(() => {
+                router.updatePageLinks();
+            })
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .on('/user/:id', (params, query) => {
+        userController(params, query, router)
+            .then(() => {
+                router.updatePageLinks();
+            })
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .on('/create/post', () => {
+        return createPostController(router)
+            .then(() => {
+                router.updatePageLinks();
+            })
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .on('/create/category', () => {
+        return createCategoryController(router)
+            .then(() => {
+                router.updatePageLinks();
+            })
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .on('/sign-in', () => {
+        return signinController(router)
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .on('/register', () => {
+        return registerController()
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .on('/about', () => {
+        return aboutController();
+    })
+    .on('/unauthorized', () => {
+        return unauthorizedController()
+            .then(() => {
+                router.updatePageLinks();
+            })
+            .catch((err) => {
+                toastr.error(err);
+            });
+    })
+    .notFound(() => {
+        return notFoundController()
+            .catch((err) => {
+                toastr.error(err);
+            });
     })
     .resolve();
 
@@ -152,9 +144,9 @@ user.onStatusChange = (usr) => {
         }
     } else {
         $('.private-menu')
-        .each((index, menu) => {
-            $(menu).hide();
-        });
+            .each((index, menu) => {
+                $(menu).hide();
+            });
         signInBtn.text('Sign in');
         signInBtn.attr('href', '/sign-in');
     }
@@ -162,7 +154,7 @@ user.onStatusChange = (usr) => {
 
 user.checkStatus(true);
 
-$('#sign-in-btn').click( (ev) => {
+$('#sign-in-btn').click((ev) => {
     if ($('#sign-in-btn').text() === 'Sign out') {
         ev.preventDefault();
         user.signOut();

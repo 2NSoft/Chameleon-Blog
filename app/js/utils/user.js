@@ -59,6 +59,17 @@ class User {
                 toastr.error(err.responseText);
             } );
     }
+
+    register( registerData ) {
+        $.post('/api/v1/users', registerData)
+        .then(() => {
+            this.signIn(registerData);
+        })
+        .catch((err) => {
+            this._setUser(null);
+            toastr.error(err.responseText);
+        });
+    }
 }
 
 const user = new User();

@@ -13,6 +13,7 @@ export function get(params) {
                 ev.preventDefault();
                 const registerInfo = {
                     username: $('#register-username').val(),
+                    email: $('#register-email').val(),
                     password: $('#register-password').val(),
                     repeat: $('#register-repeat').val(),
                 };

@@ -3,11 +3,9 @@
 import { load as loadTemplate } from 'templates';
 import user from 'user';
 import data from 'data';
-import dateFormat from 'date';
-
+import { setActiveLink } from 'setLink';
 
 const $appContainer = $('#app-container');
-const $menu = $('.navbar-collapse ul');
 
 
 export function get(router) {
@@ -16,7 +14,7 @@ export function get(router) {
         .then( (_userData) => {
             userData = _userData;
             if (!userData.signedIn) {
-                return user.checkStatus(true);
+                return Promise.reject( router.navigate('/unauthorized'));
             }
             return data.getCategories();
         })
@@ -47,16 +45,7 @@ export function get(router) {
                     });
             });
 
-            $menu
-                .children()
-                .each( (index, item) => {
-                    const link = $($(item).find('a').eq(0));
-                    if (link.text()==='Blog') {
-                        link.addClass('isActive');
-                    } else {
-                        link.removeClass('isActive');
-                    }
-                });
+            setActiveLink( 'Blog' );
         })
         .catch( (err) => console.log(err));
 }

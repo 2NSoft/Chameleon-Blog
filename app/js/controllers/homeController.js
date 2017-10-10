@@ -5,6 +5,7 @@ import { registerCarousel } from 'carouselHelper';
 import { registerQuote } from 'quoteHelper';
 import { registerCard } from 'cardHelper';
 import { registerList } from 'listHelper';
+import { setActiveLink } from 'setLink';
 import data from 'data';
 
 const $appContainer = $('#app-container');
@@ -49,5 +50,7 @@ export function get(router) {
                            $(ev.currentTarget).attr( 'data-post' );
                 router.navigate(`/blog/${id}`);
             });
+
+            setActiveLink( 'Home' );
         });
 }

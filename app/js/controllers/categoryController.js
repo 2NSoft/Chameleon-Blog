@@ -1,7 +1,6 @@
 /* globals $ toastr */
 
 import { load as loadTemplate } from 'templates';
-import user from 'user';
 import data from 'data';
 import dateFormat from 'date';
 import { registerQuote } from 'quoteHelper';

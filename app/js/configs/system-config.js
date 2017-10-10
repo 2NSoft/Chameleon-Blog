@@ -10,6 +10,7 @@ System.config({
         // App files
         'app': 'js/app.js',
         'templates': 'js/utils/templates.js',
+        'setLink': 'js/utils/setLink.js',
         'data': 'js/utils/data.js',
         'user': 'js/utils/user.js',
         'constants': 'js/helpers/constants.js',
@@ -24,6 +25,7 @@ System.config({
 
         // Controllers
         'homeController': 'js/controllers/homeController.js',
+        'aboutController': 'js/controllers/aboutController.js',
         'signinController': 'js/controllers/signinController.js',
         'registerController': 'js/controllers/registerController.js',
         'blogController': 'js/controllers/blogController.js',
@@ -32,6 +34,8 @@ System.config({
             'js/controllers/createCategoryController.js',
         'categoryController': 'js/controllers/categoryController.js',
         'userController': 'js/controllers/userController.js',
+        'notFoundController': 'js/controllers/notFoundController.js',
+        'unauthorizedController': 'js/controllers/unauthorizedController.js',
         'defaultController': 'js/controllers/defaultController.js',
 
         // Library files
